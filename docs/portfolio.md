@@ -19,6 +19,7 @@ install/boot smoke tests.
 | [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) | Weekly ecosystem map (bug/gap radar) + **auto-generated release compatibility reports** (npm dist-tags + 6-repo CI + ecosystem health) | weekly |
 | [dsh-docs](https://github.com/zoahdev/dsh-docs) | PR-ready official documentation proposals (publishing guide, troubleshooting, adding packages) + specs + RFC archive + upstream patch queue | maintained |
 | [dsh-tutorials](https://zoahdev.github.io/dsh-tutorials/) | 31 bilingual tutorial pages (getting started → plugin dev → diagnostics → retrieval efficiency) | live |
+| [dsh-evolve](https://github.com/zoahdev/dsh-evolve) | verification-driven self-evolution loop (experience → rules → verify); dogfood run found and fixed doctor's own lint bug | v0.1.0 |
 
 ## Upstream contributions (cherry-pick-ready on the fork)
 
