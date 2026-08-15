@@ -1,0 +1,97 @@
+diff --git a/packages/llm/llm-pi-ai/src/catalog.ts b/packages/llm/llm-pi-ai/src/catalog.ts
+index 7a4ff7e..13228cd 100644
+--- a/packages/llm/llm-pi-ai/src/catalog.ts
++++ b/packages/llm/llm-pi-ai/src/catalog.ts
+@@ -196,6 +196,12 @@ export interface PiAiCompatProfile {
+   thinkingFormat?: PiAiThinkingFormat
+   /** Whether the endpoint accepts `reasoning_effort`; absent keeps the catalog entry's, then pi-ai's baseURL-derived guess. */
+   supportsReasoningEffort?: boolean
++  /** Whether the endpoint accepts the `developer` role (vs only `system`); absent keeps the catalog entry's, then pi-ai's baseURL-derived guess (#2023). */
++  supportsDeveloperRole?: boolean
++  /** Whether the endpoint accepts the `store` field; absent keeps the catalog entry's, then pi-ai's baseURL-derived guess (#2023). */
++  supportsStore?: boolean
++  /** Whether replayed assistant messages must carry an empty `reasoning_content` when reasoning is enabled (#2023). */
++  requiresReasoningContentOnAssistantMessages?: boolean
+ }
+ 
+ /** One configured model entry: an id plus the catalog fields it overrides. */
+@@ -394,11 +400,20 @@ function resolveModelCompat(
+ ): { compat: OpenAICompletionsCompat } | Record<string, never> {
+   const thinkingFormat = entry.compat?.thinkingFormat ?? route?.thinkingFormat
+   const supportsReasoningEffort = entry.compat?.supportsReasoningEffort ?? route?.supportsReasoningEffort
+-  if (thinkingFormat === undefined && supportsReasoningEffort === undefined) return {}
++  const supportsDeveloperRole = entry.compat?.supportsDeveloperRole ?? route?.supportsDeveloperRole
++  const supportsStore = entry.compat?.supportsStore ?? route?.supportsStore
++  const requiresReasoningContentOnAssistantMessages = entry.compat?.requiresReasoningContentOnAssistantMessages
++    ?? route?.requiresReasoningContentOnAssistantMessages
++  const anySwitch = thinkingFormat !== undefined
++    || supportsReasoningEffort !== undefined
++    || supportsDeveloperRole !== undefined
++    || supportsStore !== undefined
++    || requiresReasoningContentOnAssistantMessages !== undefined
++  if (!anySwitch) return {}
+   if (api !== 'openai-completions') {
+-    if (entry.compat?.thinkingFormat !== undefined || entry.compat?.supportsReasoningEffort !== undefined) {
++    if (anySwitch && entry.compat !== undefined) {
+       invalid(provider, `model "${entry.id}" sets compat reasoning switches, but its api is "${api}";`
+-        + ' thinkingFormat and supportsReasoningEffort exist only on openai-completions')
++        + ' the compat switches exist only on openai-completions')
+     }
+     return {}
+   }
+@@ -414,6 +429,11 @@ function resolveModelCompat(
+       ...inherited,
+       ...thinkingFormat === undefined ? {} : { thinkingFormat },
+       ...supportsReasoningEffort === undefined ? {} : { supportsReasoningEffort },
++      ...supportsDeveloperRole === undefined ? {} : { supportsDeveloperRole },
++      ...supportsStore === undefined ? {} : { supportsStore },
++      ...requiresReasoningContentOnAssistantMessages === undefined
++        ? {}
++        : { requiresReasoningContentOnAssistantMessages },
+     },
+   }
+ }
+diff --git a/packages/llm/llm-pi-ai/src/config.ts b/packages/llm/llm-pi-ai/src/config.ts
+index 4e8e032..ada67af 100644
+--- a/packages/llm/llm-pi-ai/src/config.ts
++++ b/packages/llm/llm-pi-ai/src/config.ts
+@@ -188,6 +188,9 @@ const thinkingBudgets = z.object({
+ const compatProfile: z<PiAiCompatProfile> = z.object({
+   thinkingFormat: z.union(SUPPORTED_THINKING_FORMATS),
+   supportsReasoningEffort: z.boolean(),
++  supportsDeveloperRole: z.boolean(),
++  supportsStore: z.boolean(),
++  requiresReasoningContentOnAssistantMessages: z.boolean(),
+ })
+ 
+ /**
+diff --git a/packages/llm/llm-pi-ai/tests/catalog.spec.ts b/packages/llm/llm-pi-ai/tests/catalog.spec.ts
+index eb4ba51..948d148 100644
+--- a/packages/llm/llm-pi-ai/tests/catalog.spec.ts
++++ b/packages/llm/llm-pi-ai/tests/catalog.spec.ts
+@@ -826,6 +826,25 @@ describe('reasoning-dispatch compat switches', () => {
+       anthropic: { compat: { thinkingFormat: 'openai' } },
+     })).toThrow(/no model on the route speaks openai-completions/)
+   })
++
++  it('forwards role/store/reasoning-content switches on openai-completions routes (#2023)', () => {
++    const models = modelsOf({
++      'qwen-token-plan': {
++        api: 'openai-completions',
++        baseURL: 'https://qwen.test',
++        compat: {
++          supportsDeveloperRole: false,
++          supportsStore: false,
++          requiresReasoningContentOnAssistantMessages: true,
++        },
++        models: [{ id: 'deepseek-v4-flash-0731' }],
++      },
++    }, 'qwen-token-plan')
++    const compat = models.get('deepseek-v4-flash-0731')?.compat as OpenAICompletionsCompat | undefined
++    expect(compat?.supportsDeveloperRole).toBe(false)
++    expect(compat?.supportsStore).toBe(false)
++    expect(compat?.requiresReasoningContentOnAssistantMessages).toBe(true)
++  })
+ })
+ 
+ describe('resolution snapshots', () => {
