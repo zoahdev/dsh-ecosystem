@@ -44,6 +44,7 @@
 [upstream-patches.md](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md)：七张 cherry-pick 就绪分支（#1697/#1842/#1856/#1861/#1869/#1891/#1919）+ 提交清单。最新上游 validator 复核 marketplace 5 个 plugin.json：**5/5 valid**。
 
 ## 协作记录
+- 同行互认（#1918 SandBase / #1922 1024Store / #1926 dsh-web-shell / #1931 workbench）：三个确认后已收入 dsh-subscribe 注册表（539 插件），四条评论已发（包含具体技术建议）；#1931 已邀请作者提供仓库链接。
 
 - 与 moonquake2004/dsh-doctor 互认：双方 doctor 的 profile-shadow/P5 检查互相验证；统一契约 envelope 已提出，验收 fixture 已备好
 - 官方 `@deepseek-ai/dsh` npm `latest` 坏标签（0.0.1-rc.1）已被官方修复为 0.1.0-rc.6——我们在 #984 确认闭环
