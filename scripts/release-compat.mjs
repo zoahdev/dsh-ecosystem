@@ -58,6 +58,11 @@ async function main() {
   const npm = await fetchJson('https://registry.npmjs.org/@deepseek-ai/dsh')
   const distTags = npm['dist-tags'] ?? {}
 
+  let snapshot = null
+  try {
+    snapshot = await fetchJson('https://awesome-dsh-plugin.com/plugins.json')
+  } catch { /* ecosystem section reports unavailable */ }
+
   const rows = []
   for (const repo of REPOS) {
     try {
@@ -85,6 +90,31 @@ async function main() {
   lines.push('| --- | --- |')
   for (const [tag, v] of Object.entries(distTags).sort()) lines.push(`| \`${tag}\` | \`${v}\` |`)
   lines.push('')
+  if (snapshot && Array.isArray(snapshot.plugins)) {
+    const byCategory = {}
+    let newThisWeek = 0
+    const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000
+    for (const p of snapshot.plugins) {
+      byCategory[p.category] = (byCategory[p.category] ?? 0) + 1
+      if (p.added && Date.parse(p.added) >= weekAgo) newThisWeek += 1
+    }
+    lines.push('## Ecosystem health (awesome-dsh-plugin)')
+    lines.push('')
+    lines.push(`| Metric | Value |`)
+    lines.push(`| --- | --- |`)
+    lines.push(`| Total plugins | ${snapshot.plugins.length} |`)
+    lines.push(`| Snapshot updated | ${snapshot.updated ?? 'n/a'} |`)
+    lines.push(`| Added (last 7 days) | ${newThisWeek} |`)
+    lines.push('')
+    lines.push('Top categories:')
+    lines.push('')
+    lines.push('| Category | Count |')
+    lines.push('| --- | --- |')
+    for (const [cat, n] of Object.entries(byCategory).sort((a, b) => b[1] - a[1]).slice(0, 8)) {
+      lines.push(`| ${cat} | ${n} |`)
+    }
+    lines.push('')
+  }
   lines.push('## zoahdev suite CI (latest run)')
   lines.push('')
   lines.push('| Repo | Latest CI | Head | Date |')
