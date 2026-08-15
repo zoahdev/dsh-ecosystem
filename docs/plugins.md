@@ -94,3 +94,5 @@
 | [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe) | Steam-style storefront + zero-dep CLI + in-harness market tools (market_search/market_stats/market_install_command); 535-plugin registry, 19 verified, bilingual | live v2 (Pages) |
 
 > ⚠️ Marketplace naming is crowded: at least two projects share the "plugin doctor" name and several share "plugin search". Check `npm view <name>` and the repo owner before installing anything.
+
+- [dsh-pet-evolve](https://github.com/zoahdev/dsh-pet-evolve) - 会随 agent 成长的宠物（Show and tell #1984）
