@@ -3,9 +3,9 @@
  * Patch fleet auto-verifier.
  *
  * Watches deepseek-ai/deepseek-harness master. Whenever the commit moves,
- * re-verifies all five zoahdev patch branches against the new master:
+ * re-verifies all seven zoahdev patch branches against the new master:
  *   1. `git apply --check` for every patch (clean application)
- *   2. (optional --run-tests) vitest over the five affected packages
+ *   2. (optional --run-tests) vitest over the affected packages
  *   3. writes docs/patch-verify/<master-sha>.md + updates state
  *
  * Output contract:
@@ -30,6 +30,7 @@ const BRANCHES = [
   'fix/llm-deepseek-reasoning-low',
   'fix/markdown-single-tilde',
   'fix/session-persistence-recreate-on-enoent',
+  'fix/web-crypto-randomuuid-insecure-context',
 ]
 
 const TEST_DIRS = [
@@ -39,6 +40,7 @@ const TEST_DIRS = [
   'packages/llm/llm-deepseek/tests',
   'packages/client/ui-primitives/tests',
   'packages/session/session-persistence-jsonl/tests',
+  'packages/util/random-uuid/tests',
 ]
 
 function parseArgs(argv) {
