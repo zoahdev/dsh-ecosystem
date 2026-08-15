@@ -1,0 +1,33 @@
+name: release-compat
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release train to report on (e.g. 0.1.0-rc.6)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Generate compatibility report
+        run: node scripts/release-compat.mjs --version "${{ github.event.inputs.version }}"
+      - name: Commit and push report
+        run: |
+          git config user.name "dsh-ecosystem bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/release-compat
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "docs: release compatibility report for ${{ github.event.inputs.version }}"
+            git push
+          fi
