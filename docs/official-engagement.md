@@ -6,6 +6,7 @@
 
 | # | 问题 | 交付 | 状态 |
 |---|---|---|---|
+| 1992 | 自定义 pi-ai 路由（私有 provider key）下模型丢失 catalog 已知模态，带图会话无法切换 | 根因定位 `resolveRouteModels` 只按 provider 查目录；补丁加按 model id 的全局目录回退（仅 input 模态，api/baseUrl 仍属路由），分支 `fix/pi-ai-catalog-model-id-inheritance`；catalog 53/53 + tsc 全绿 | 已回复（#discussioncomment-18031307），补丁待 PR 通道 |
 | 1993 | source launch 下 dsh-typert-protocol 出现 src/lib 双副本，插件 Remote 装饰器标记不可见，所有端点静默 404 | 根因定位模块私有 WeakMap；补丁改为 `Symbol.for` 全局共享注册表（与 #1697 同机制），分支 `fix/typert-remote-markers-shared-registry`；protocol 10/10 + tsc 全绿 | 已回复（#discussioncomment-18031268），补丁待 PR 通道 |
 | 1961 | Windows 清理 %TEMP% 删除 spill 目录后，子进程输出溢出时 ENOENT 崩溃整个服务 | 根因定位 `subprocess-local/spawn.ts`：mkdtemp 单例目录被系统清理，`spillAll` 无父目录检查；补丁 ENOENT 时重建私有目录并重试一次、失败降级为内存 tail，分支 `fix/subprocess-spill-recreate-on-enoent`；运行时复现验证通过 | 已回复（#discussioncomment-18030665），补丁待 PR 通道 |
 | 1944 | compaction 摘要请求与正常回合参数不一致，provider 前缀缓存全 miss（~122k tokens 重新计费） | 根因定位 `summarizeWithLlm` 只继承 provider/model 且强加 `maxTokens: 8192`；补丁改为整包继承 routed header config（agent-loop 同语义），分支 `fix/compaction-inherit-header-config`；124/124 测试全绿 | 已回复（#discussioncomment-18030489），补丁待 PR 通道 |
@@ -45,7 +46,7 @@
 
 ## 补丁就绪队列
 
-[upstream-patches.md](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md)：十一张 cherry-pick 就绪分支（#1697/#1842/#1856/#1861/#1869/#1891/#1919/#1944/#1954/#1961/#1993）+ 提交清单。最新上游 validator 复核 marketplace 5 个 plugin.json：**5/5 valid**。
+[upstream-patches.md](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md)：十二张 cherry-pick 就绪分支（#1697/#1842/#1856/#1861/#1869/#1891/#1919/#1944/#1954/#1961/#1993/#1992）+ 提交清单。最新上游 validator 复核 marketplace 5 个 plugin.json：**5/5 valid**。
 
 ## 协作记录
 - 同行互认（#1918 SandBase / #1922 1024Store / #1926 dsh-web-shell / #1931 workbench）：三个确认后已收入 dsh-subscribe 注册表（539 插件），四条评论已发（包含具体技术建议）；#1931 已邀请作者提供仓库链接。
