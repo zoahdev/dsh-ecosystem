@@ -29,6 +29,7 @@
 - **dsh-plugin-doctor v1.10.0**：`check` 子命令（RFC #1846 表面）、preflight、`--profile`（profile-shadow + manifest-bom + large-files/#1859）、`--env`（win-bash，#1856）、`pre-execute-side-effects` lint（#1863）、dsh-doctor/v1 envelope、契约验收 harness
 - **dsh-ecosystem**：生态地图 + 周报 + **官方 release 兼容性报告自动生成**（npm dist-tags 变动自动出报告）
 - **dsh-docs**：官方文档 PR 预置（publish / adding-a-package / troubleshooting）+ 两份规格 + RFC 存档
+- **dsh-evolve**：验证驱动自进化循环（experience → rules → verify）；dogfood 实证——检查 doctor 自己发现并修复 lint 自误报（v1.10.1），Show and tell #1906
 - **教程站**：29 页中英教程（含 in-harness 市场实战、doctor 排障手册）
 - **商店页**：hero 显示"已验证 rc.6 + 6 仓库 CI 全绿 + 兼容报告"状态条（https://zoahdev.github.io/dsh-subscribe/）
 
