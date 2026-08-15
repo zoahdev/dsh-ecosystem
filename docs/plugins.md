@@ -65,6 +65,9 @@
 | dsh-incognito | (discussion #1788) | privacy mode | — | ○ |
 | dsh-turn-rewind | Anionex | rewind conversation/workspace | 48 | ○ |
 | dsh-annotation | omdsh-dev | annotations in web | 45 | ○ |
+| dsh-telegram-duty | luzhengyangtx | Telegram gateway / pocket duty office | — | 🟡 |
+| dsh-deepseek-balance | lancecheney | session balance/spend badge | — | ○ |
+| dsh-agent-team-gui | toolclub | persistent multi-model squads UI | — | 🟡 |
 
 ## Curated lists (the crowd)
 
@@ -87,5 +90,6 @@
 | dsh-market | in-DSH plugin market plugin | live |
 | bradeGithub/DSH-Plugins-Marketplace | web marketplace | live |
 | dsh-find-plugins | skill that finds/installs/verifies | live |
+| [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe) | Steam-style storefront: one-click subscribe + one-command sync (registry.json curated, verified flags) | live (Pages) |
 
 > ⚠️ Marketplace naming is crowded: at least two projects share the "plugin doctor" name and several share "plugin search". Check `npm view <name>` and the repo owner before installing anything.
