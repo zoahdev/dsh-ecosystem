@@ -1,0 +1,43 @@
+diff --git a/packages/client/connection/src/api-request-trust.ts b/packages/client/connection/src/api-request-trust.ts
+index ea8914c..499178e 100644
+--- a/packages/client/connection/src/api-request-trust.ts
++++ b/packages/client/connection/src/api-request-trust.ts
+@@ -116,7 +116,14 @@ export function isTrustedApiRequest(request: ApiTrustRequest, trustedHosts: read
+   const origin = header(request.headers, 'origin')
+   if (origin === undefined) return true
+   try {
+-    return new URL(origin).host === hostUrl.host
++    // Compare hostnames only: Chromium can serialize the Origin without the
++    // non-default port (Edge 151 sent `http://127.0.0.1` for a page served at
++    // `:3080`), while the Host header keeps it - an exact `.host` comparison
++    // then 403s every POST (discussion #2009). Port-less matching mirrors the
++    // trustedHosts convention (a port-less authority matches any port), and
++    // the fence remains a same-site defense, not an auth layer: local
++    // processes can already pass with Origin-less requests.
++    return new URL(origin).hostname === hostUrl.hostname
+   } catch {
+     return false
+   }
+diff --git a/packages/client/connection/tests/api-request-trust.host.spec.ts b/packages/client/connection/tests/api-request-trust.host.spec.ts
+index f145230..6464e95 100644
+--- a/packages/client/connection/tests/api-request-trust.host.spec.ts
++++ b/packages/client/connection/tests/api-request-trust.host.spec.ts
+@@ -68,6 +68,18 @@ describe('isTrustedApiRequest', () => {
+     expect(isTrustedApiRequest(request({ host: 'localhost:3080', 'sec-fetch-site': 'same-origin' }), [])).toBe(true)
+   })
+ 
++  it('accepts a browser Origin whose serialization omits the non-default port (#2009)', () => {
++    // Chromium 151 (Edge) sent `Origin: http://127.0.0.1` for a page served at
++    // `http://127.0.0.1:3080`; Host kept the port, so an exact `.host`
++    // comparison rejected every POST with 403. Hostname matching follows the
++    // trustedHosts port-less convention.
++    expect(isTrustedApiRequest(request({ host: '127.0.0.1:3080', origin: 'http://127.0.0.1' }), [])).toBe(true)
++    expect(isTrustedApiRequest(request({ host: 'localhost:3080', origin: 'http://localhost' }), [])).toBe(true)
++    expect(isTrustedApiRequest(request({ host: 'harness.internal:3080', origin: 'http://harness.internal' }), ['harness.internal'])).toBe(true)
++    // A different hostname is still refused.
++    expect(isTrustedApiRequest(request({ host: '127.0.0.1:3080', origin: 'http://evil.example' }), [])).toBe(false)
++  })
++
+   it('assertTrustedAuthority accepts bare authorities and throws on anything more', () => {
+     for (const entry of ['harness.internal', 'harness.internal:3080', 'HARNESS.internal:80', '10.0.0.9', '[::1]:3080']) {
+       expect(() => { assertTrustedAuthority(entry) }).not.toThrow()
