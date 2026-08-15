@@ -29,6 +29,7 @@ const BRANCHES = [
   'fix/terminal-bash-win32-shell',
   'fix/llm-deepseek-reasoning-low',
   'fix/markdown-single-tilde',
+  'fix/session-persistence-recreate-on-enoent',
 ]
 
 const TEST_DIRS = [
@@ -37,6 +38,7 @@ const TEST_DIRS = [
   'packages/terminal/terminal-bash/tests',
   'packages/llm/llm-deepseek/tests',
   'packages/client/ui-primitives/tests',
+  'packages/session/session-persistence-jsonl/tests',
 ]
 
 function parseArgs(argv) {
