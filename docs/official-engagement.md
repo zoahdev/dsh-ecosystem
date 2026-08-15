@@ -8,6 +8,7 @@
 |---|---|---|---|
 | 1697 | 插件安装后所有工具调用 `undefined.prepare`（双实例 unique symbol） | 根因定位到 `packages/core/tools/src/index.ts:466`；`Symbol.for` + `TOOL_RUNTIME_SCHEDULER_PROTOCOL_VERSION` 协议守卫 + 三态回归测试；分支 `fix/tool-runtime-scheduler-symbol-for` | 官方仍 open，补丁待 PR 通道 |
 | 1842 | profile `package.json` 带 UTF-8 BOM 导致 `dsh web` 启动崩溃 | 复现 + 定位 `packages/boot/app-boot/src/profile.ts:267-272`；一行剥 BOM 补丁；分支 `fix/profile-manifest-bom-strip` | 官方仍 open，补丁待 PR 通道 |
+| 1856 | Windows minimal 预设默认 bash `/bin/bash` 无法解析 | 独立复现（node-pty File not found）+ 源码定位 + 补丁分支 `fix/terminal-bash-win32-shell`（win32 探测 PATH/Git/LOCALAPPDATA） | 官方仍 open，补丁待 PR 通道 |
 | 1841 | tool 失败后 session 卡死（tool_call 未配对） | 确诊为 #1697 家族第二阶症状；给出 10 秒验证命令与恢复建议 | 已回应 |
 
 ## 标准提案（RFC）
@@ -22,14 +23,15 @@
 ## 已实现的生态基础设施
 
 - **dsh-subscribe v0.3**：536 插件注册表（20 verified）+ 中英商店页 + 零依赖 CLI + in-harness 市场（一键安装/卸载/更新/approve-builds，同源 POST + curated-only）
-- **dsh-plugin-doctor v1.6.0**：preflight、`--profile`（profile-shadow + manifest-bom）、`--env`、dsh-doctor/v1 envelope、跨实现契约验收 harness
+- **dsh-plugin-doctor v1.7.0**：`check` 子命令（RFC #1846 表面）、preflight、`--profile`（profile-shadow + manifest-bom）、`--env`、dsh-doctor/v1 envelope、跨实现契约验收 harness
 - **dsh-ecosystem**：生态地图 + 周报 + **官方 release 兼容性报告自动生成**（npm dist-tags 变动自动出报告）
 - **dsh-docs**：官方文档 PR 预置（publish / adding-a-package / troubleshooting）+ 两份规格 + RFC 存档
 - **教程站**：29 页中英教程（含 in-harness 市场实战、doctor 排障手册）
+- **商店页**：hero 显示"已验证 rc.6 + 6 仓库 CI 全绿 + 兼容报告"状态条（https://zoahdev.github.io/dsh-subscribe/）
 
-## 收录 PR（外部审核中）
+## 收录 PR
 
-- awesome-dsh-plugin [#492](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/492)（Plugin Markets & Managers）
+- awesome-dsh-plugin [#492](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/492)（Plugin Markets & Managers）—— **已合并 ✅ 2026-08-15**
 - ydhrdh/dsh-marketplace [#3](https://github.com/ydhrdh/dsh-marketplace/pull/3)（5 个插件，rebase 到最新 main，Validate 等维护者批准）
 
 ## 协作记录
