@@ -9,6 +9,9 @@
 | 1697 | 插件安装后所有工具调用 `undefined.prepare`（双实例 unique symbol） | 根因定位到 `packages/core/tools/src/index.ts:466`；`Symbol.for` + `TOOL_RUNTIME_SCHEDULER_PROTOCOL_VERSION` 协议守卫 + 三态回归测试；分支 `fix/tool-runtime-scheduler-symbol-for` | 官方仍 open，补丁待 PR 通道 |
 | 1842 | profile `package.json` 带 UTF-8 BOM 导致 `dsh web` 启动崩溃 | 复现 + 定位 `packages/boot/app-boot/src/profile.ts:267-272`；一行剥 BOM 补丁；分支 `fix/profile-manifest-bom-strip` | 官方仍 open，补丁待 PR 通道 |
 | 1856 | Windows minimal 预设默认 bash `/bin/bash` 无法解析 | 独立复现（node-pty File not found）+ 源码定位 + 补丁分支 `fix/terminal-bash-win32-shell`（win32 探测 PATH/Git/LOCALAPPDATA） | 官方仍 open，补丁待 PR 通道 |
+| 1861 | deepseek-official adapter 白名单缺 `reasoning_effort: low` | 源码定位 `packages/llm/llm-deepseek/src/adapter.ts`（off/high/max）+ 补丁分支 `fix/llm-deepseek-reasoning-low` | 官方仍 open，补丁待 PR 通道 |
+| 1862 | stale standing generation 未 dispose → webServer 路由重复 | 确认机制 + dsh-subscribe v0.3.1 幂等挂载守卫（per-profile disposer map，重挂载先 dispose） | 官方仍 open；我方已防御 |
+| 1859/1863 | session 大日志 RangeError / pre-execute 审批前副作用 | 背书增量哈希修复 + O(n) clone 与错误透传建议；安全边界分析（approval=consent UX，非沙箱）+ lint 提议 | 已回应 |
 | 1841 | tool 失败后 session 卡死（tool_call 未配对） | 确诊为 #1697 家族第二阶症状；给出 10 秒验证命令与恢复建议 | 已回应 |
 
 ## 标准提案（RFC）
