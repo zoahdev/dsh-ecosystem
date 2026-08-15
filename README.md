@@ -12,6 +12,8 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 - **[Curated plugin catalog](./docs/plugins.md)** — real dsh-installable plugins with category, author, visibility, and (where audited) verification signals.
 - **Bug radar** — known upstream bugs with status, root cause, and fixes/workarounds.
 - **Gap radar** — what the ecosystem is missing (and who is building it).
+- **[Release compatibility reports](./docs/release-compat/)** — npm dist-tags + zoahdev suite CI + ecosystem health, auto-generated on every release train change.
+- **[Official engagement dossier](./docs/official-engagement.md)** — one page of every upstream contribution (patches, RFCs, docs) with links and status.
 
 ## How to read quality signals
 
