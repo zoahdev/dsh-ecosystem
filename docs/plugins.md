@@ -90,6 +90,6 @@
 | dsh-market | in-DSH plugin market plugin | live |
 | bradeGithub/DSH-Plugins-Marketplace | web marketplace | live |
 | dsh-find-plugins | skill that finds/installs/verifies | live |
-| [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe) | Steam-style storefront: one-click subscribe + one-command sync (registry.json curated, verified flags) | live (Pages) |
+| [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe) | Steam-style storefront + zero-dep CLI + in-harness market tools (market_search/market_stats/market_install_command); 535-plugin registry, 19 verified, bilingual | live v2 (Pages) |
 
 > ⚠️ Marketplace naming is crowded: at least two projects share the "plugin doctor" name and several share "plugin search". Check `npm view <name>` and the repo owner before installing anything.
