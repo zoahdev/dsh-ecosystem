@@ -3,7 +3,7 @@
  * Patch fleet auto-verifier.
  *
  * Watches deepseek-ai/deepseek-harness master. Whenever the commit moves,
- * re-verifies all fifteen zoahdev patch branches against the new master:
+ * re-verifies all seventeen zoahdev patch branches against the new master:
  *   1. `git apply --check` for every patch (clean application)
  *   2. (optional --run-tests) vitest over the affected packages
  *   3. writes docs/patch-verify/<master-sha>.md + updates state
@@ -39,6 +39,8 @@ const BRANCHES = [
   'fix/session-list-isolate-corrupt',
   'fix/agent-abort-reason-json-safe',
   'fix/api-trust-origin-hostname-portless',
+  'fix/pi-ai-compat-expose-role-store',
+  'fix/prompt-user-paced-no-deadline',
 ]
 
 const TEST_DIRS = [
