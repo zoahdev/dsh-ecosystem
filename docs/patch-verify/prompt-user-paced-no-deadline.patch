@@ -1,0 +1,66 @@
+diff --git a/packages/host/apiproxy/src/fetch/client.ts b/packages/host/apiproxy/src/fetch/client.ts
+index 70e3ece..711948a 100644
+--- a/packages/host/apiproxy/src/fetch/client.ts
++++ b/packages/host/apiproxy/src/fetch/client.ts
+@@ -418,7 +418,11 @@ export abstract class AbstractApiClient implements IApiClient {
+     selectModel: (payload, signal) => this.callUnary('session.selectModel', payload, signal),
+     rename: (payload, signal) => this.callUnary('session.rename', payload, signal),
+     fork: (payload, signal) => this.callUnary('session.fork', payload, signal),
+-    prompt: (payload, signal) => this.callUnary('session.prompt', payload, signal),
++    // A prompt is user-paced: under host load (plugins/background tasks) the
++    // turn can legitimately exceed the bounded unary deadline, so the client
++    // must not abort it with a fixed 30s timeout (discussion #2060). Caller
++    // and connection aborts remain.
++    prompt: (payload, signal) => this.callUnary('session.prompt', payload, signal, 'caller-signal-only'),
+     attachment: (payload, signal) => this.callUnary('session.attachment', payload, signal),
+     updateQueue: (payload, signal) => this.callUnary('session.updateQueue', payload, signal),
+     cancel: (payload, signal) => this.callUnary('session.cancel', payload, signal),
+@@ -427,7 +431,7 @@ export abstract class AbstractApiClient implements IApiClient {
+   readonly subagents: IApiClient['subagents'] = {
+     list: (payload, signal) => this.callUnary('subagent.list', payload, signal),
+     history: (payload, signal) => this.callUnary('subagent.history', payload, signal),
+-    prompt: (payload, signal) => this.callUnary('subagent.prompt', payload, signal),
++    prompt: (payload, signal) => this.callUnary('subagent.prompt', payload, signal, 'caller-signal-only'),
+     interrupt: (payload, signal) => this.callUnary('subagent.interrupt', payload, signal),
+   }
+ 
+diff --git a/packages/host/apiproxy/tests/fetch-carrier.spec.ts b/packages/host/apiproxy/tests/fetch-carrier.spec.ts
+index 2000f70..4bd2b4a 100644
+--- a/packages/host/apiproxy/tests/fetch-carrier.spec.ts
++++ b/packages/host/apiproxy/tests/fetch-carrier.spec.ts
+@@ -461,6 +461,35 @@ describe('unary round trip (handler ⇄ client, no network)', () => {
+     }
+   })
+ 
++  it('lets session.prompt finish after the 30-second default unary deadline (#2060)', async () => {
++    vi.useFakeTimers()
++    const timeoutSpy = vi.spyOn(AbortSignal, 'timeout').mockImplementation((milliseconds) => {
++      const controller = new AbortController()
++      setTimeout(() => {
++        controller.abort(new DOMException('The operation was aborted due to timeout', 'TimeoutError'))
++      }, milliseconds)
++      return controller.signal
++    })
++    try {
++      const api = fakeApi()
++      api.sessions.prompt = async (request) => {
++        await new Promise(resolve => setTimeout(resolve, 30_001))
++        return { rpcId: request.rpcId, result: { ok: true as const, value: { accepted: true as const } } }
++      }
++      const execution = client(api).sessions.prompt({
++        sessionId: 's' as never,
++        mode: 'queue',
++        content: [{ type: 'text', text: 'x' }],
++      })
++      const assertion = expect(execution).resolves.toMatchObject({ result: { ok: true } })
++      await Promise.all([vi.advanceTimersByTimeAsync(30_001), assertion])
++      expect(timeoutSpy).not.toHaveBeenCalled()
++    } finally {
++      timeoutSpy.mockRestore()
++      vi.useRealTimers()
++    }
++  })
++
+   it('round-trips the subagent domain through the wire form', async () => {
+     const c = client()
+     expect((await c.subagents.list({ parentSessionId: 'parent' as never })).result)
