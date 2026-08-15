@@ -1,0 +1,188 @@
+diff --git a/packages/core/agent-loop/src/tool-calls.ts b/packages/core/agent-loop/src/tool-calls.ts
+index 3acfe71..589ae13 100644
+--- a/packages/core/agent-loop/src/tool-calls.ts
++++ b/packages/core/agent-loop/src/tool-calls.ts
+@@ -14,7 +14,7 @@
+ import type { Context } from '@deepseek-ai/cordis'
+ import { assertNever, createToolResultMessage, type ToolCallBlock } from '@deepseek-ai/dsh-llm'
+ import type { Session, UserMessage } from '@deepseek-ai/dsh-session'
+-import { TOOL_ABORTED_BEFORE_DISPATCH, TOOL_RUNTIME_SCHEDULER, type ToolExecutionInput, type ToolExecutionMode, type ToolExecutionResult, type ToolRunContext } from '@deepseek-ai/dsh-tools'
++import { assertSchedulerProtocol, TOOL_ABORTED_BEFORE_DISPATCH, TOOL_RUNTIME_SCHEDULER, type ToolExecutionInput, type ToolExecutionMode, type ToolExecutionResult, type ToolRunContext } from '@deepseek-ai/dsh-tools'
+ 
+ /** One tool call after argument parsing, ready to schedule. */
+ interface PlannedCall {
+@@ -144,13 +144,14 @@ async function runGroup(
+ 
+   // `committed` advances only across contiguous model-order slots.
+   const commitReady = async (): Promise<void> => {
++    const scheduler = assertSchedulerProtocol(ctx.tools[TOOL_RUNTIME_SCHEDULER])
+     while (committed < group.length) {
+       const slot = slots[committed]
+       if (slot === undefined) break
+       const call = group[committed]
+       const result = slot.needsPost
+-        ? await ctx.tools[TOOL_RUNTIME_SCHEDULER].finalize(slot.exec, slot.result)
+-        : ctx.tools[TOOL_RUNTIME_SCHEDULER].finish(slot.exec, slot.result)
++        ? await scheduler.finalize(slot.exec, slot.result)
++        : scheduler.finish(slot.exec, slot.result)
+       // oxlint-disable-next-line typescript/no-non-null-assertion -- bounded index
+       appendToolResult(session, turn, step, call!.block, result, callSeqs[committed]!)
+       for (const context of result.additionalContexts ?? []) acceptContext(context)
+@@ -166,11 +167,12 @@ async function runGroup(
+     const call = group[index]!
+     callSeqs[index] = appendToolCall(session, turn, step, call.block)
+     started++
+-    const prepared = await ctx.tools[TOOL_RUNTIME_SCHEDULER].prepare(call.exec)
++    const scheduler = assertSchedulerProtocol(ctx.tools[TOOL_RUNTIME_SCHEDULER])
++    const prepared = await scheduler.prepare(call.exec)
+     throwSchedulerFailure()
+     switch (prepared.kind) {
+       case 'dispatch': {
+-        const promise = ctx.tools[TOOL_RUNTIME_SCHEDULER].dispatch(prepared.exec).then(
++        const promise = scheduler.dispatch(prepared.exec).then(
+           (outcome) => {
+             slots[index] = { exec: prepared.exec, result: outcome.result, needsPost: outcome.kind === 'post-result' }
+             return index
+diff --git a/packages/core/tools/src/index.ts b/packages/core/tools/src/index.ts
+index 377015f..410085b 100644
+--- a/packages/core/tools/src/index.ts
++++ b/packages/core/tools/src/index.ts
+@@ -449,6 +449,13 @@ export type ScheduledToolDispatch =
+  * @internal
+  */
+ export interface ToolRuntimeScheduler {
++  /**
++   * Scheduler protocol version. `dsh-agent-loop` refuses a scheduler whose
++   * version differs from its own copy of dsh-tools, so a version-skewed
++   * duplicate instance (e.g. rc.5 vs rc.6) still fails loudly instead of
++   * running an incompatible protocol through the shared symbol key.
++   */
++  readonly protocolVersion: number
+   /** Materialize input, run the ordered pre-execute/guard gate, and decide what stage follows. */
+   prepare(exec: ToolExecutionInput): Promise<ScheduledToolPreparation>
+   /** Run only the around-dispatch/body stage. */
+@@ -461,9 +468,50 @@ export interface ToolRuntimeScheduler {
+ 
+ /**
+  * Scheduler entry point omitted from the generated named service API.
++ *
++ * Uses `Symbol.for` (shared global registry) rather than `Symbol()` so that
++ * duplicate physical copies of this package — e.g. a profile-hoisted
++ * `@deepseek-ai/dsh-tools` shadowing the host copy (discussion #1697) — still
++ * agree on the scheduler key. The namespaced key keeps the cross-realm
++ * collision surface negligible.
++ * @internal
++ */
++export const TOOL_RUNTIME_SCHEDULER: unique symbol = Symbol.for('@deepseek-ai/dsh-tools.scheduler')
++
++/**
++ * Version of the scheduler protocol shared through
++ * {@link TOOL_RUNTIME_SCHEDULER}. Bump when the scheduler surface changes.
+  * @internal
+  */
+-export const TOOL_RUNTIME_SCHEDULER: unique symbol = Symbol('@deepseek-ai/dsh-tools.scheduler')
++export const TOOL_RUNTIME_SCHEDULER_PROTOCOL_VERSION = 1
++
++/**
++ * Validate a scheduler read through {@link TOOL_RUNTIME_SCHEDULER} before use.
++ *
++ * The symbol key is shared across module instances (see discussion #1697), so
++ * a missing or version-mismatched scheduler must fail loudly: silently running
++ * a different copy's protocol would turn today's crash into a subtle
++ * cross-version mismatch.
++ * @internal
++ */
++export function assertSchedulerProtocol(scheduler: unknown): ToolRuntimeScheduler {
++  if (scheduler === null || scheduler === undefined) {
++    throw new Error(
++      'tool runtime scheduler is unavailable: a duplicate @deepseek-ai/dsh-tools instance is likely '
++      + 'shadowing the host copy (see discussion #1697). Upgrade the harness to 0.1.0-rc.6 and reinstall '
++      + 'the profile so the host instance is resolved first.',
++    )
++  }
++  const candidate = scheduler as { protocolVersion?: unknown }
++  if (candidate.protocolVersion !== TOOL_RUNTIME_SCHEDULER_PROTOCOL_VERSION) {
++    throw new Error(
++      `tool runtime scheduler protocol version mismatch: expected ${TOOL_RUNTIME_SCHEDULER_PROTOCOL_VERSION}, `
++      + `got ${String(candidate.protocolVersion)}. Copies of @deepseek-ai/dsh-tools with different versions are `
++      + 'both loaded; reinstall the profile against a single version (see discussion #1697).',
++    )
++  }
++  return scheduler as ToolRuntimeScheduler
++}
+ 
+ /** Canonical error code for cancellation after a tool body was invoked. */
+ export const TOOL_ABORTED = 'ABORTED'
+@@ -794,6 +842,7 @@ export class ToolRuntime extends Service {
+ 
+   /** Internal staged view consumed by `dsh-agent-loop`'s parallel scheduler. */
+   readonly [TOOL_RUNTIME_SCHEDULER]: ToolRuntimeScheduler = {
++    protocolVersion: TOOL_RUNTIME_SCHEDULER_PROTOCOL_VERSION,
+     prepare: exec => this.prepareScheduledExecution(exec),
+     dispatch: exec => this.dispatchScheduledExecution(exec),
+     finalize: (exec, result) => this.finalizeScheduledExecution(exec, result),
+diff --git a/packages/core/tools/tests/duplicate-instance.spec.ts b/packages/core/tools/tests/duplicate-instance.spec.ts
+new file mode 100644
+index 0000000..cfcc081
+--- /dev/null
++++ b/packages/core/tools/tests/duplicate-instance.spec.ts
+@@ -0,0 +1,59 @@
++import { describe, expect, it, vi } from 'vitest'
++import { assertSchedulerProtocol, TOOL_RUNTIME_SCHEDULER_PROTOCOL_VERSION } from '../src/index.ts'
++
++/**
++ * Regression test for
++ * https://github.com/deepseek-ai/deepseek-harness/discussions/1697
++ *
++ * A profile with `nodeLinker: hoisted` can install a second physical copy of
++ * `@deepseek-ai/dsh-tools` (same version) next to a plugin, shadowing the
++ * host copy for bare-specifier resolution. `Symbol()` identity is per module
++ * instance, so a ToolRuntime created by the shadowed copy was invisible to
++ * agent-loop's scheduler lookup and every tool call crashed with
++ * `Cannot read properties of undefined (reading 'prepare')`.
++ *
++ * `Symbol.for` keys live in the shared global registry, so all module
++ * instances in one process agree on the scheduler entry point while the
++ * namespaced key keeps the collision surface negligible.
++ */
++describe('TOOL_RUNTIME_SCHEDULER', () => {
++  it('keeps the same identity across duplicate module instances', async () => {
++    vi.resetModules()
++    const first = await import('../src/index.ts')
++    vi.resetModules()
++    const second = await import('../src/index.ts?duplicate-instance=1')
++
++    expect(first.TOOL_RUNTIME_SCHEDULER as symbol).toBe(second.TOOL_RUNTIME_SCHEDULER as symbol)
++  })
++
++  it('a scheduler written by one instance is readable through another instance symbol', async () => {
++    vi.resetModules()
++    const first = await import('../src/index.ts')
++    vi.resetModules()
++    const second = await import('../src/index.ts?duplicate-instance=2')
++
++    const registry: Record<symbol, { prepare: () => string }> = {}
++    registry[first.TOOL_RUNTIME_SCHEDULER as symbol] = { prepare: () => 'scheduled' }
++
++    const scheduler = registry[second.TOOL_RUNTIME_SCHEDULER as symbol]
++    expect(scheduler?.prepare()).toBe('scheduled')
++  })
++
++  it('exposes a stable scheduler protocol version', () => {
++    expect(TOOL_RUNTIME_SCHEDULER_PROTOCOL_VERSION).toBe(1)
++  })
++
++  it('accepts a scheduler whose protocol version matches', () => {
++    const scheduler = { protocolVersion: TOOL_RUNTIME_SCHEDULER_PROTOCOL_VERSION, prepare: () => 'ok' }
++    expect(assertSchedulerProtocol(scheduler).prepare()).toBe('ok')
++  })
++
++  it('rejects a missing scheduler with an actionable duplicate-instance error', () => {
++    expect(() => assertSchedulerProtocol(undefined)).toThrow(/duplicate @deepseek-ai\/dsh-tools instance/)
++  })
++
++  it('rejects a version-skewed scheduler instead of running an incompatible protocol', () => {
++    const skewed = { protocolVersion: TOOL_RUNTIME_SCHEDULER_PROTOCOL_VERSION + 1, prepare: () => 'old' }
++    expect(() => assertSchedulerProtocol(skewed)).toThrow(/protocol version mismatch/)
++  })
++})
