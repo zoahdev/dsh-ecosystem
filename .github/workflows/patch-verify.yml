@@ -1,0 +1,33 @@
+name: patch-verify
+
+on:
+  schedule:
+    - cron: '23 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Shallow-clone official harness
+        run: git clone --depth 1 https://github.com/deepseek-ai/deepseek-harness.git ../dsh-official
+      - name: Verify patch fleet against current master
+        run: node scripts/patch-verify.mjs --repo-dir ../dsh-official --run-tests | tee /tmp/patch-verify.out
+      - name: Commit and push if master moved
+        run: |
+          if grep -q 'CHANGED' /tmp/patch-verify.out; then
+            git config user.name "dsh-ecosystem bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add docs/patch-verify
+            git commit -m "docs: patch fleet verification for updated master"
+            git push
+          else
+            echo "master unchanged"
+          fi
