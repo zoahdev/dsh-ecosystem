@@ -54,6 +54,7 @@
 | hello-dsh | pingfanfan | zero-to-plugin tutorial | 44 | ○ |
 | oh-my-dsh | LaplaceYoung | 700+ skills | 45 | ○ |
 | dsh-gitbash-preset | liceses | Git Bash preset | 42 | ○ |
+| orchestration-skill | pridesong | cheap-model long-task orchestration (state on disk, mechanical gates) | — | ○ |
 
 ## Agents / teams / misc
 
