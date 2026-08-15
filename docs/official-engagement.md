@@ -6,6 +6,7 @@
 
 | # | 问题 | 交付 | 状态 |
 |---|---|---|---|
+| 2009 | Chromium 151 把 Origin 序列化成无端口形式，/api POST 全部 403（trust fence 端口比较） | 根因定位 `.host` 精确比较；补丁改 `.hostname`（对齐 trustedHosts 无端口约定），分支 `fix/api-trust-origin-hostname-portless`；11/11 + tsc 全绿 | 已回复（#discussioncomment-18031625），补丁待 PR 通道 |
 | 1997 | Windows 点「停止」后 AbortSignal.reason 为 DOMException，turn/end 序列化失败变成 host/agent-error | 根因定位 agent-loop 直接把 signal.reason 写入 turn/end；补丁做 JSON 安全归一化（typed 原因透传，非 JSON 值归为 `{kind:'user'}`），分支 `fix/agent-abort-reason-json-safe`；cancel 32/32 + tsc 全绿 | 已回复（#discussioncomment-18031394），补丁待 PR 通道 |
 | 2002 | 单个损坏的 Zstandard 会话文件（首帧非单行 header）导致 dsh web 启动崩溃循环 | 根因定位 `listArtifacts` 让损坏文件异常冒泡到 workspace boot；补丁改为逐文件隔离（warn + 跳过，load 仍拒绝，系统性错误仍致命），分支 `fix/session-list-isolate-corrupt`；239/239 + tsc 全绿 | 已回复（#discussioncomment-18031351），补丁待 PR 通道 |
 | 1992 | 自定义 pi-ai 路由（私有 provider key）下模型丢失 catalog 已知模态，带图会话无法切换 | 根因定位 `resolveRouteModels` 只按 provider 查目录；补丁加按 model id 的全局目录回退（仅 input 模态，api/baseUrl 仍属路由），分支 `fix/pi-ai-catalog-model-id-inheritance`；catalog 53/53 + tsc 全绿 | 已回复（#discussioncomment-18031307），补丁待 PR 通道 |
@@ -44,11 +45,12 @@
 ## 收录 PR
 
 - awesome-dsh-plugin [#492](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/492)（Plugin Markets & Managers）—— **已合并 ✅ 2026-08-15**
+- awesome-dsh-plugin [#560](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/560)（Self-evolution / dsh-rule-evolve）—— **已合并 ✅ 2026-08-15**
 - ydhrdh/dsh-marketplace [#3](https://github.com/ydhrdh/dsh-marketplace/pull/3)（5 个插件，rebase 到最新 main，Validate 等维护者批准）
 
 ## 补丁就绪队列
 
-[upstream-patches.md](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md)：十四张 cherry-pick 就绪分支（#1697/#1842/#1856/#1861/#1869/#1891/#1919/#1944/#1954/#1961/#1993/#1992/#2002/#1997）+ 提交清单。最新上游 validator 复核 marketplace 5 个 plugin.json：**5/5 valid**。
+[upstream-patches.md](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md)：十五张 cherry-pick 就绪分支（#1697/#1842/#1856/#1861/#1869/#1891/#1919/#1944/#1954/#1961/#1993/#1992/#2002/#1997/#2009）+ 提交清单。最新上游 validator 复核 marketplace 5 个 plugin.json：**5/5 valid**。
 
 ## 协作记录
 - 同行互认（#1918 SandBase / #1922 1024Store / #1926 dsh-web-shell / #1931 workbench）：三个确认后已收入 dsh-subscribe 注册表（539 插件），四条评论已发（包含具体技术建议）；#1931 已邀请作者提供仓库链接。
