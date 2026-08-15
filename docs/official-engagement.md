@@ -6,6 +6,8 @@
 
 | # | 问题 | 交付 | 状态 |
 |---|---|---|---|
+| 1944 | compaction 摘要请求与正常回合参数不一致，provider 前缀缓存全 miss（~122k tokens 重新计费） | 根因定位 `summarizeWithLlm` 只继承 provider/model 且强加 `maxTokens: 8192`；补丁改为整包继承 routed header config（agent-loop 同语义），分支 `fix/compaction-inherit-header-config`；124/124 测试全绿 | 已回复（#discussioncomment-18030489），补丁待 PR 通道 |
+| 1954 | Windows 循环 junction 导致 skill 目录 ELOOP，dsh 启动即崩溃 | 根因定位 chokidar pre-ready 错误拒绝 readiness 并向上 rethrow；补丁对 ELOOP 仅降级该根（warn + unhealthy + skip + 重试恢复），分支 `fix/skill-filesystem-eloop-contained`；watcher 11/11 全绿 | 已回复（#discussioncomment-18030568），补丁待 PR 通道 |
 | 1919 | dsh web 内网 HTTP 下 `crypto.randomUUID is not a function`，提供方目录无法加载 | 根因定位 4 个浏览器侧 mint（commands/ui-conversation/apiproxy/llm）；新增零依赖 `@deepseek-ai/dsh-random-uuid`（`getRandomValues` 兜底）+ `INLINE_SAFE`；分支 `fix/web-crypto-randomuuid-insecure-context`；frozen install + 双 face 构建 + 782/782 测试全绿 | 已回复（#discussioncomment-18030320），补丁待 PR 通道 |
 | 1697 | 插件安装后所有工具调用 `undefined.prepare`（双实例 unique symbol） | 根因定位到 `packages/core/tools/src/index.ts:466`；`Symbol.for` + `TOOL_RUNTIME_SCHEDULER_PROTOCOL_VERSION` 协议守卫 + 三态回归测试；分支 `fix/tool-runtime-scheduler-symbol-for` | 官方仍 open，补丁待 PR 通道 |
 | 1842 | profile `package.json` 带 UTF-8 BOM 导致 `dsh web` 启动崩溃 | 复现 + 定位 `packages/boot/app-boot/src/profile.ts:267-272`；一行剥 BOM 补丁；分支 `fix/profile-manifest-bom-strip` | 官方仍 open，补丁待 PR 通道 |
@@ -41,7 +43,7 @@
 
 ## 补丁就绪队列
 
-[upstream-patches.md](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md)：七张 cherry-pick 就绪分支（#1697/#1842/#1856/#1861/#1869/#1891/#1919）+ 提交清单。最新上游 validator 复核 marketplace 5 个 plugin.json：**5/5 valid**。
+[upstream-patches.md](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md)：九张 cherry-pick 就绪分支（#1697/#1842/#1856/#1861/#1869/#1891/#1919/#1944/#1954）+ 提交清单。最新上游 validator 复核 marketplace 5 个 plugin.json：**5/5 valid**。
 
 ## 协作记录
 - 同行互认（#1918 SandBase / #1922 1024Store / #1926 dsh-web-shell / #1931 workbench）：三个确认后已收入 dsh-subscribe 注册表（539 插件），四条评论已发（包含具体技术建议）；#1931 已邀请作者提供仓库链接。
