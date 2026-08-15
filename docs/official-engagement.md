@@ -26,7 +26,7 @@
 ## 已实现的生态基础设施
 
 - **dsh-subscribe v0.3**：536 插件注册表（20 verified）+ 中英商店页 + 零依赖 CLI + in-harness 市场（一键安装/卸载/更新/approve-builds，同源 POST + curated-only）
-- **dsh-plugin-doctor v1.9.0**：`check` 子命令（RFC #1846 表面）、preflight、`--profile`（profile-shadow + manifest-bom）、`--env`（win-bash，#1856）、`pre-execute-side-effects` lint（#1863）、dsh-doctor/v1 envelope、契约验收 harness
+- **dsh-plugin-doctor v1.10.0**：`check` 子命令（RFC #1846 表面）、preflight、`--profile`（profile-shadow + manifest-bom + large-files/#1859）、`--env`（win-bash，#1856）、`pre-execute-side-effects` lint（#1863）、dsh-doctor/v1 envelope、契约验收 harness
 - **dsh-ecosystem**：生态地图 + 周报 + **官方 release 兼容性报告自动生成**（npm dist-tags 变动自动出报告）
 - **dsh-docs**：官方文档 PR 预置（publish / adding-a-package / troubleshooting）+ 两份规格 + RFC 存档
 - **教程站**：29 页中英教程（含 in-harness 市场实战、doctor 排障手册）
