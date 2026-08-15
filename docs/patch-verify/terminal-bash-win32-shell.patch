@@ -1,0 +1,56 @@
+diff --git a/packages/terminal/terminal-bash/src/index.ts b/packages/terminal/terminal-bash/src/index.ts
+index 82e864e..8cd1d91 100644
+--- a/packages/terminal/terminal-bash/src/index.ts
++++ b/packages/terminal/terminal-bash/src/index.ts
+@@ -15,6 +15,8 @@ import { effectiveSandboxMode } from '@deepseek-ai/dsh-sandbox-policy'
+ import { type Config, type ResolvedConfig, validateConfig } from './config.ts'
+ import { LocalPtySession } from './session.ts'
+ import { CONTROLLED_PROMPT } from './sanitize.ts'
++import { existsSync } from 'node:fs'
++import { join } from 'node:path'
+ 
+ export { Config } from './config.ts'
+ export type { Config as TerminalLocalConfig } from './config.ts'
+@@ -68,8 +70,41 @@ function childEnvironment(spec: TerminalBackendSpawnSpec): Record<string, string
+   }
+ }
+ 
++/**
++ * Windows cannot resolve POSIX-style `/bin/bash`: CreateProcess does not
++ * PATH-search slash-prefixed paths, and node-pty passes argv[0] through
++ * unchanged (discussion #1856). When the default shellPath is still the
++ * POSIX default, probe the locations Git for Windows and WSL use.
++ */
++function winBashFallback(): string | undefined {
++  const candidates: string[] = []
++  const sep = process.platform === 'win32' ? ';' : ':'
++  for (const dir of (process.env.PATH ?? '').split(sep)) {
++    if (dir !== '') candidates.push(join(dir, 'bash.exe'), join(dir, 'bash'))
++  }
++  for (const root of [process.env.ProgramFiles, process.env['ProgramFiles(x86)'], process.env.LOCALAPPDATA]) {
++    if (root !== undefined) {
++      candidates.push(join(root, 'Git', 'bin', 'bash.exe'), join(root, 'Programs', 'Git', 'bin', 'bash.exe'))
++    }
++  }
++  for (const candidate of candidates) {
++    try { if (existsSync(candidate)) return candidate } catch { /* unreadable */ }
++  }
++  return undefined
++}
++
++function resolveShellPath(config: ResolvedConfig): string {
++  if (process.platform !== 'win32' || config.shellPath !== '/bin/bash') return config.shellPath
++  const resolved = winBashFallback()
++  if (resolved !== undefined) return resolved
++  throw new Error(
++    'terminal-bash: default shellPath /bin/bash cannot resolve on Windows. Install Git for Windows or WSL, '
++    + "or set terminal-bash.shellPath to an absolute bash.exe path (discussion #1856).",
++  )
++}
++
+ function spawnArgv(ctx: Context, config: ResolvedConfig, policy: SandboxExecutionPolicy): string[] {
+-  const argv = [config.shellPath, ...config.shellArgs]
++  const argv = [resolveShellPath(config), ...config.shellArgs]
+   if (policy.mode === 'danger-full-access') return argv
+   const sandbox = ctx.get('sandbox')
+   if (sandbox === undefined) {
