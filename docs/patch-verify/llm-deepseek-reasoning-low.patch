@@ -1,0 +1,37 @@
+diff --git a/packages/llm/llm-deepseek/src/adapter.ts b/packages/llm/llm-deepseek/src/adapter.ts
+index 5fa62d3..f713210 100644
+--- a/packages/llm/llm-deepseek/src/adapter.ts
++++ b/packages/llm/llm-deepseek/src/adapter.ts
+@@ -93,10 +93,12 @@ export const DEFAULT_CONTEXT_WINDOW = 1_000_000
+ export const DEFAULT_MAX_TOKENS = 256_000
+ const STREAM_IDLE_TIMEOUT_CODE = 'LLM_STREAM_IDLE_TIMEOUT'
+ const OFF_REASONING_EFFORT = ReasoningEffortId('off')
++const LOW_REASONING_EFFORT = ReasoningEffortId('low')
+ const HIGH_REASONING_EFFORT = ReasoningEffortId('high')
+ const MAX_REASONING_EFFORT = ReasoningEffortId('max')
+ const REASONING_EFFORTS = [
+   { id: OFF_REASONING_EFFORT, name: 'Off' },
++  { id: LOW_REASONING_EFFORT, name: 'Low' },
+   { id: HIGH_REASONING_EFFORT, name: 'High' },
+   { id: MAX_REASONING_EFFORT, name: 'Max' },
+ ] as const
+diff --git a/packages/llm/llm-deepseek/tests/adapter.spec.ts b/packages/llm/llm-deepseek/tests/adapter.spec.ts
+index 387abf5..0e8aa5b 100644
+--- a/packages/llm/llm-deepseek/tests/adapter.spec.ts
++++ b/packages/llm/llm-deepseek/tests/adapter.spec.ts
+@@ -671,6 +671,7 @@ describe('plugin registration and config', () => {
+         reasoning: {
+           efforts: [
+             { id: ReasoningEffortId('off'), name: 'Off' },
++            { id: ReasoningEffortId('low'), name: 'Low' },
+             { id: ReasoningEffortId('high'), name: 'High' },
+             { id: ReasoningEffortId('max'), name: 'Max' },
+           ],
+@@ -691,6 +692,7 @@ describe('plugin registration and config', () => {
+         reasoning: {
+           efforts: [
+             { id: ReasoningEffortId('off'), name: 'Off' },
++            { id: ReasoningEffortId('low'), name: 'Low' },
+             { id: ReasoningEffortId('high'), name: 'High' },
+             { id: ReasoningEffortId('max'), name: 'Max' },
+           ],
