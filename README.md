@@ -29,18 +29,26 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 - `dsh-plugin` topic: 2,958 repos (noisy: includes skills, desktops, and unrelated projects)
 - Curated lists: 8+ (crowded — see [docs/plugins.md](./docs/plugins.md#curated-lists))
 - Marketplaces/registries: dsh-marketplace (PR-based), dsh-market (in-DSH), several web marketplaces
-- Tracked upstream bugs: 10 (see [Bug radar](./docs/weekly-2026-08-15.md#bug-radar))
+- Tracked upstream bugs: 16 (16 cherry-pick-ready patches, see [patch list](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md))
 - Gaps: 8 (see [Gap radar](./docs/weekly-2026-08-15.md#gap-radar))
 
 ## The zoahdev suite (fully verified)
 
 | Repo | What | Verification |
 |---|---|---|
-| [dsh-github-intelligence](https://github.com/zoahdev/dsh-github-intelligence) | 195+ tools × 15 ecosystems + weekly digest | ✅ real-API smoke, 44 tests, visibility (198 tools), CI |
-| [dsh-plugin-doctor](https://github.com/zoahdev/dsh-plugin-doctor) | Pre-publish preflight + diagnostics | ✅ 12 tests, visibility, CI |
+| [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe) | Steam-style market + 563-plugin registry + in-harness install | ✅ check-registry, CI, awesome #492 merged |
+| [dsh-rule-evolve](https://github.com/zoahdev/dsh-rule-evolve) | Verification-driven self-evolution + badge | ✅ 18 tests, awesome #560 merged |
+| [dsh-plugin-doctor](https://github.com/zoahdev/dsh-plugin-doctor) | Pre-publish preflight + env explain + entry-points + profile-shadow | ✅ 40 tests + dsh-doctor/v1 contract |
+| [dsh-plugin-doctor-action](https://github.com/zoahdev/dsh-plugin-doctor-action) | One-line GitHub Action CI gate for plugin authors | ✅ @v1, Release tarball |
+| [dsh-shelf](https://github.com/zoahdev/dsh-shelf) | Session lifecycle: web panel + CLI + verify/rescue | ✅ 14 tests |
+| [dsh-pet-evolve](https://github.com/zoahdev/dsh-pet-evolve) | The pet that grows with your agent | ✅ 13 tests |
+| [dsh-github-intelligence](https://github.com/zoahdev/dsh-github-intelligence) | 195+ tools × 15 ecosystems + weekly digest | ✅ real-API smoke, 44 tests, CI |
 | [dsh-plugin-search](https://github.com/zoahdev/dsh-plugin-search) | Plugin discovery inside DSH | ✅ 6 tests, visibility, CI |
 | [dsh-github-release-radar](https://github.com/zoahdev/dsh-github-release-radar) | Releases/stars/tags radar | ✅ 16 tests, visibility, CI |
 | [dsh-plugin-template](https://github.com/zoahdev/dsh-plugin-template) | Verified template with peer guard | ✅ CI |
+| [dsh-tutorials](https://github.com/zoahdev/dsh-tutorials) | 45-page bilingual tutorial site | ✅ Pages live |
+| [dsh-docs](https://github.com/zoahdev/dsh-docs) | Official-docs gap specs + upstream patch list | ✅ 15 patches documented |
+| [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) | Map + weekly + release-compat + patch-verify | ✅ 15-branch patch-verify bot |
 
 ## Contribute
 
