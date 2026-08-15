@@ -37,6 +37,10 @@
 - awesome-dsh-plugin [#492](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/492)（Plugin Markets & Managers）—— **已合并 ✅ 2026-08-15**
 - ydhrdh/dsh-marketplace [#3](https://github.com/ydhrdh/dsh-marketplace/pull/3)（5 个插件，rebase 到最新 main，Validate 等维护者批准）
 
+## 补丁就绪队列
+
+[upstream-patches.md](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md)：四张 cherry-pick 就绪分支（#1697/#1842/#1856/#1861）+ 提交清单。最新上游 validator 复核 marketplace 5 个 plugin.json：**5/5 valid**。
+
 ## 协作记录
 
 - 与 moonquake2004/dsh-doctor 互认：双方 doctor 的 profile-shadow/P5 检查互相验证；统一契约 envelope 已提出，验收 fixture 已备好
