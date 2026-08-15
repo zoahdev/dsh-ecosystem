@@ -39,7 +39,7 @@
 
 ## 补丁就绪队列
 
-[upstream-patches.md](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md)：四张 cherry-pick 就绪分支（#1697/#1842/#1856/#1861）+ 提交清单。最新上游 validator 复核 marketplace 5 个 plugin.json：**5/5 valid**。
+[upstream-patches.md](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md)：五张 cherry-pick 就绪分支（#1697/#1842/#1856/#1861/#1869）+ 提交清单。最新上游 validator 复核 marketplace 5 个 plugin.json：**5/5 valid**。
 
 ## 协作记录
 
