@@ -1,0 +1,22 @@
+diff --git a/packages/client/ui-primitives/src/markdown/parse.ts b/packages/client/ui-primitives/src/markdown/parse.ts
+index 50f8f17..826fe8c 100644
+--- a/packages/client/ui-primitives/src/markdown/parse.ts
++++ b/packages/client/ui-primitives/src/markdown/parse.ts
+@@ -25,7 +25,7 @@ import { mathCompatibility } from './mathCompatibility.ts'
+  */
+ export function parseGfm(text: string): Root {
+   return fromMarkdown(text, {
+-    extensions: [gfm(), cjkFriendlyStrong()],
++    extensions: [gfm({ singleTilde: false }), cjkFriendlyStrong()],
+     mdastExtensions: [gfmFromMarkdown()],
+   })
+ }
+@@ -38,7 +38,7 @@ export function parseGfm(text: string): Root {
+  */
+ export function parseGfmWithMath(text: string): Root {
+   return fromMarkdown(text, {
+-    extensions: [gfm(), cjkFriendlyStrong(), mathCompatibility(), math()],
++    extensions: [gfm({ singleTilde: false }), cjkFriendlyStrong(), mathCompatibility(), math()],
+     mdastExtensions: [gfmFromMarkdown(), mathFromMarkdown()],
+   })
+ }
