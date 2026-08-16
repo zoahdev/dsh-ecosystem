@@ -59,3 +59,33 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 ## License
 
 CC0 — the map is data; use it freely.
+---
+
+# 中文说明
+
+**DeepSeek Harness 插件生态地图。**
+
+> 由 [zoahdev](https://github.com/zoahdev) 维护，每周更新，带质量信号。
+
+DeepSeek Harness（`dsh`）在 0.1.0-rc.6 开源后，生态几天内爆发：2958 个仓库挂了 `dsh-plugin` 标签，至少 8 个精选列表，新插件每小时都在出现。但没人在一个地方统一追踪**质量信号、bug 状态、生态空白**。这张地图就是那个地方。
+
+## 包含什么
+
+- **周报**（`docs/`）：本周上了什么、坏了什么、修了什么。
+- **精选插件目录**（`docs/plugins.md`）：真实可装的插件，带分类、作者、可见性、验证信号。
+- **Bug 雷达**：已知上游 bug，带状态、根因、修复/规避方案。
+- **空白雷达**：生态还缺什么（以及谁在做）。
+- **发布兼容性报告**（`docs/release-compat/`）：npm dist-tags + zoahdev 套件 CI + 生态健康，每次 release train 变化自动生成。
+- **官方互动档案**（`docs/official-engagement.md`）：一页列出所有上游贡献（补丁、RFC、文档）及状态链接。
+
+## 质量信号怎么看
+
+| 信号 | 含义 |
+|---|---|
+| ✅ verified | 我已审计：有 CI、有 release/tarball，（zoahdev 套件）还通过了真实注册表的 agent 可见性测试 |
+| 🟡 signals partial | 有部分信号（release 或 CI），未完全审计 |
+| ○ not audited | 从 topic/awesome/marketplace 调研收录，质量未验证 |
+
+## 许可
+
+CC0——地图是数据，随意使用。
