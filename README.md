@@ -1,3 +1,94 @@
+# DeepSeek Harness 全家桶中文总览
+
+> 由 [zoahdev](https://github.com/zoahdev) 维护。这里串起我在 DeepSeek Harness（dsh）生态做的全部东西——每个仓库是干嘛的、彼此什么关系、新手从哪开始。**给中文读者的一页地图。**
+
+## 一句话看懂关系
+
+```mermaid
+flowchart LR
+  A[找/装插件] -->|订阅| S[dsh-subscribe 市场]
+  A -->|发现| P[dsh-plugin-search]
+  B[写/发插件] -->|模板| T[dsh-plugin-template]
+  B -->|自检| D[dsh-plugin-doctor]
+  B -->|安全| G[dsh-poison-guard]
+  C[运营/观测] -->|会话| H[dsh-shelf]
+  C -->|回放| R[dsh-replay]
+  C -->|审计| SA[dsh-sandbox-audit]
+  E[看生态] -->|地图| M[dsh-ecosystem]
+  E -->|情报| I[dsh-github-intelligence]
+  E -->|教程| TU[dsh-tutorials]
+  E -->|文档| DD[dsh-docs]
+```
+
+## 六大板块
+
+### ① 市场与分发 —— 怎么找插件、装插件
+
+| 仓库 | 一句话 |
+| --- | --- |
+| [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe) | Steam 式插件市场：网页一键订阅 + 一条命令同步进 dsh，572 插件注册表 |
+| [dsh-marketplace](https://github.com/zoahdev/dsh-marketplace) | 开源插件市场：浏览、搜索、一条 `dsh` 命令安装 |
+| [awesome-dsh-plugin](https://github.com/zoahdev/awesome-dsh-plugin) | 插件精选列表（zoahdev 已有 4 个项目被收录） |
+| [dsh-plugin-search](https://github.com/zoahdev/dsh-plugin-search) | 在 dsh agent 里直接搜 npm + awesome 插件 |
+
+### ② 开发工具链 —— 怎么写插件、发插件
+
+| 仓库 | 一句话 |
+| --- | --- |
+| [dsh-plugin-template](https://github.com/zoahdev/dsh-plugin-template) | 已验证的最小插件模板：CI 真的会调用 tool（不只是加载成功） |
+| [dsh-plugin-doctor](https://github.com/zoahdev/dsh-plugin-doctor) | 发布前健康检查：manifest/patch/build/pack/install + 环境诊断 + 投毒预检 |
+| [dsh-plugin-doctor-action](https://github.com/zoahdev/dsh-plugin-doctor-action) | 上面那套健康检查的 GitHub Action，一行接入 CI |
+| [dsh-rule-evolve](https://github.com/zoahdev/dsh-rule-evolve) | 验证驱动的自我进化：失败日志 → 经验 → 可审计的 AGENTS.md 规则 |
+| [dsh-pet-evolve](https://github.com/zoahdev/dsh-pet-evolve) | 会随你的 agent 一起成长的电子宠物 |
+
+### ③ 安全 —— 防投毒、防泄露、防越权
+
+| 仓库 | 一句话 |
+| --- | --- |
+| [dsh-poison-guard](https://github.com/zoahdev/dsh-poison-guard) | 装插件前投毒扫描：AST（JS-X-Ray）+ 反混淆解码，拦混淆外发/eval/隐藏命令 |
+| [dsh-poison-guard-action](https://github.com/zoahdev/dsh-poison-guard-action) | 投毒扫描的 GitHub Action |
+| [dsh-redact](https://github.com/zoahdev/dsh-redact) | 分享会话日志前脱敏（API key/token/私钥/邮箱/路径） |
+| [dsh-sandbox-audit](https://github.com/zoahdev/dsh-sandbox-audit) | 沙箱策略一致性审计（找出越权读/写/删） |
+
+### ④ 内核层可观测 —— 看 agent 到底在干嘛
+
+| 仓库 | 一句话 |
+| --- | --- |
+| [dsh-replay](https://github.com/zoahdev/dsh-replay) | 时间旅行调试器：回放整条轨迹（思考/工具调用/结果）并 diff |
+| [dsh-trace](https://github.com/zoahdev/dsh-trace) | 聚合可观测仪表盘：token/tool/error/latency 一张 HTML 看全 |
+| [dsh-compose-viz](https://github.com/zoahdev/dsh-compose-viz) | 可视化 preset 的 Cordis 组成（分组/隔离域/工具行） |
+| [dsh-preset-diff](https://github.com/zoahdev/dsh-preset-diff) | 对比两个 agent preset 的差异 |
+| [dsh-shelf](https://github.com/zoahdev/dsh-shelf) | 会话生命周期：导出/归档/回收站/搜索/统计 |
+
+### ⑤ 生态情报 —— 看整个 dsh 生态
+
+| 仓库 | 一句话 |
+| --- | --- |
+| [dsh-github-intelligence](https://github.com/zoahdev/dsh-github-intelligence) | 160+ 只读工具 × 15 个生态（GitHub/GitLab/npm/PyPI/...），带缓存 |
+| [dsh-github-release-radar](https://github.com/zoahdev/dsh-github-release-radar) | Release/star/仓库搜索雷达，无需 API key |
+| [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) | 生态地图：精选目录 + 周报 + 发布兼容性 + 补丁验证 |
+| [dsh-ecosystem-status](https://github.com/zoahdev/dsh-ecosystem-status) | 自动生成的状态仪表盘 |
+| [dsh-docs](https://github.com/zoahdev/dsh-docs) | 官方文档提案 + 21+ 张可 cherry-pick 的上游补丁 |
+| [dsh-tutorials](https://github.com/zoahdev/dsh-tutorials) | 45 页双语教程：入门/架构/插件开发/发布自检/贡献路线 |
+
+### ⑥ 官方上游
+
+| 仓库 | 一句话 |
+| --- | --- |
+| [deepseek-harness](https://github.com/zoahdev/deepseek-harness) | 官方仓库 fork，带着 21+ 张补丁（根因 + 回归测试，等 PR 通道开） |
+
+## 新手从哪开始
+
+1. **想装插件** → 打开 [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe)，网页订阅，一条命令同步。
+2. **想写插件** → 复制 [dsh-plugin-template](https://github.com/zoahdev/dsh-plugin-template)，写完用 [dsh-plugin-doctor](https://github.com/zoahdev/dsh-plugin-doctor) 自检。
+3. **怕装到毒** → 装 [dsh-poison-guard](https://github.com/zoahdev/dsh-poison-guard)，`dsh plugin add` 之前先扫一遍。
+4. **想看懂 agent** → 用 [dsh-replay](https://github.com/zoahdev/dsh-replay) 回放、[dsh-trace](https://github.com/zoahdev/dsh-trace) 看指标。
+5. **想跟上生态** → 看 [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) 周报 + [dsh-tutorials](https://github.com/zoahdev/dsh-tutorials) 教程。
+
+> 一句话定位：**别人在做插件，我在做「装插件、发插件、防毒、看 agent、看生态」的地基。**
+
+---
+
 # DeepSeek Harness Ecosystem Map
 
 > The living map of the dsh plugin ecosystem — curated, quality-signaled, and updated weekly. Maintained by [zoahdev](https://github.com/zoahdev).
