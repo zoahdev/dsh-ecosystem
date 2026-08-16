@@ -21,8 +21,8 @@ jobs:
       - name: Commit and push if the release train moved
         run: |
           if grep -q 'CHANGED' /tmp/watch.out; then
-            git config user.name "dsh-ecosystem bot"
-            git config user.email "actions@users.noreply.github.com"
+            git config user.name "zoahdev"
+            git config user.email "245318860+zoahdev@users.noreply.github.com"
             git add docs/release-compat
             git commit -m "docs: release compatibility report (train moved)"
             git push
