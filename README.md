@@ -28,7 +28,7 @@ flowchart LR
 
 | 仓库 | 一句话 |
 | --- | --- |
-| [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe) | Steam 式插件市场：网页一键订阅 + 一条命令同步进 dsh，500+ 插件注册表 |
+| [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe) | Steam 式插件市场：网页一键订阅 + 一条命令同步进 dsh，900+ 插件注册表 |
 | [dsh-marketplace](https://github.com/zoahdev/dsh-marketplace) | 开源插件市场：浏览、搜索、一条 `dsh` 命令安装 |
 | [awesome-dsh-plugin](https://github.com/zoahdev/awesome-dsh-plugin) | 插件精选列表（zoahdev 已有 8 个项目被收录） |
 | [dsh-plugin-search](https://github.com/zoahdev/dsh-plugin-search) | 在 dsh agent 里直接搜 npm + awesome 插件 |
