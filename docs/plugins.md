@@ -61,14 +61,13 @@
 | Plugin | Author | What | ★ | Signal |
 |---|---|---|---|---|
 | dsh-agent-teams | NanmiCoder | agent teams | 282 | ○ |
-| dsh-agent-team-gui | (discussion #1785) | multi-model squads UI | — | ○ |
 | dsh-telegram-duty | (discussion #1741) | Telegram duty office | — | ○ |
 | dsh-incognito | (discussion #1788) | privacy mode | — | ○ |
 | dsh-turn-rewind | Anionex | rewind conversation/workspace | 48 | ○ |
 | dsh-annotation | omdsh-dev | annotations in web | 45 | ○ |
 | dsh-telegram-duty | luzhengyangtx | Telegram gateway / pocket duty office | — | 🟡 |
 | dsh-deepseek-balance | lancecheney | session balance/spend badge | — | ○ |
-| dsh-agent-team-gui | toolclub | persistent multi-model squads UI | — | 🟡 |
+| [dsh-agent-team-gui](https://github.com/toolclub/dsh-agent-team-gui) | toolclub | persistent multi-model workflow teams: lead-planned DAGs, Token insights, Settings/Composer/Run Center | — | 🟡 |
 
 ## Curated lists (the crowd)
 
