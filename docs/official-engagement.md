@@ -1,6 +1,6 @@
 # zoahdev × DeepSeek Harness — official engagement dossier
 
-> 一页纸记录 zoahdev 在官方讨论区/上游仓库的全部实质贡献。每条都有可点击链接与真实验证；更新于 2026-08-15。
+> 一页纸记录 zoahdev 在官方讨论区/上游仓库的全部实质贡献。每条都有可点击链接与真实验证；更新于 2026-08-17。
 
 ## Bug 根因 + 修复（cherry-pick 就绪）
 
@@ -34,9 +34,29 @@
 | #1814 | `dsh plugin check` + `dsh doctor` 采纳提案 | 同上 |
 | #1629 | 插件脚手架 RFC 的社区实现（preflight 模式） | dsh-plugin-doctor |
 
+
+## 本周新增（2026-08-15 → 08-17）
+
+### 采纳请求 + 实测回答（Galaxy Brain 路径）
+- 采纳请求 ×5：#1841 / #1919 / #1856 / #2359 / #1932（双语，等作者标记）
+- 实测回答 ×7：#2796（插件安装）、#2790（TUI 报错）、#2747（web 无 UI）、#2770（413 上下文）、#2758（工作空间）、#2783（minimal 记忆）、#2779（第三方模型 token）
+
+### 官方采纳线
+- RFC 草稿：[subagent/steer 子代理指挥通道](https://github.com/zoahdev/dsh-docs/blob/main/docs/rfc/subagent-steer-channel.md)（#1968，社区已证明 API 可行）
+- 补丁台账新增"已诊断待修"分区：D1（token meter 低估，#2107）、D2（web compaction realm 不生效，#2107）
+- #2107 深度分析：web profile 默认禁用 compaction + meter 低估双层根因
+
+### 生态地图
+- Week 2 周报已发布（注册表 908、10 个 awesome 合并、doctor 契约 5 实现收敛）
+- dsh-ecosystem-status 仪表盘每日刷新（42 补丁 / 908 插件 / 21 已验证）
+
+### 分发
+- 博客 8 篇深度文上线：https://zoahdev.github.io/blog/（Symbol 根因 / compaction / 安全边界 / doctor 契约 / API 纪律 / 自进化 / 物理 AI / 生态信任）
+- dsh-poison-guard 已合并进 4k★ awesome-dsh-plugin；artifacts/browser-use/firecrawl 在 1 天门槛
+- 掘金/知乎一键发布包已就绪（3 篇复制即发长文）
 ## 已实现的生态基础设施
 
-- **dsh-subscribe v0.3**：536 插件注册表（20 verified）+ 中英商店页 + 零依赖 CLI + in-harness 市场（一键安装/卸载/更新/approve-builds，同源 POST + curated-only）
+- **dsh-subscribe v0.3**：908 插件注册表（21 verified）+ 中英商店页 + 零依赖 CLI + in-harness 市场（一键安装/卸载/更新/approve-builds，同源 POST + curated-only）
 - **dsh-plugin-doctor v1.10.0**：`check` 子命令（RFC #1846 表面）、preflight、`--profile`（profile-shadow + manifest-bom + large-files/#1859）、`--env`（win-bash，#1856）、`pre-execute-side-effects` lint（#1863）、dsh-doctor/v1 envelope、契约验收 harness
 - **dsh-ecosystem**：生态地图 + 周报 + **官方 release 兼容性报告自动生成**（npm dist-tags 变动自动出报告）
 - **dsh-docs**：官方文档 PR 预置（publish / adding-a-package / troubleshooting）+ 两份规格 + RFC 存档
