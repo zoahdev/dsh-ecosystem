@@ -2,6 +2,8 @@
 
 > 由 [zoahdev](https://github.com/zoahdev) 维护。这里串起我在 DeepSeek Harness（dsh）生态做的全部东西——每个仓库是干嘛的、彼此什么关系、新手从哪开始。**给中文读者的一页地图。**
 
+**最新状态（2026-08）：** 42 个上游补丁 · 5 个 npm 包 · 8 个项目进 awesome-dsh-plugin · 7 个进 awesome-deepseek-harness · 官方 RFC [#1814](https://github.com/deepseek-ai/deepseek-harness/discussions/1814)（dsh plugin check / doctor 采纳）与 [#2486](https://github.com/deepseek-ai/deepseek-harness/discussions/2486)（补丁队列）。
+
 ## 一句话看懂关系
 
 ```mermaid
@@ -26,9 +28,9 @@ flowchart LR
 
 | 仓库 | 一句话 |
 | --- | --- |
-| [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe) | Steam 式插件市场：网页一键订阅 + 一条命令同步进 dsh，572 插件注册表 |
+| [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe) | Steam 式插件市场：网页一键订阅 + 一条命令同步进 dsh，500+ 插件注册表 |
 | [dsh-marketplace](https://github.com/zoahdev/dsh-marketplace) | 开源插件市场：浏览、搜索、一条 `dsh` 命令安装 |
-| [awesome-dsh-plugin](https://github.com/zoahdev/awesome-dsh-plugin) | 插件精选列表（zoahdev 已有 4 个项目被收录） |
+| [awesome-dsh-plugin](https://github.com/zoahdev/awesome-dsh-plugin) | 插件精选列表（zoahdev 已有 8 个项目被收录） |
 | [dsh-plugin-search](https://github.com/zoahdev/dsh-plugin-search) | 在 dsh agent 里直接搜 npm + awesome 插件 |
 
 ### ② 开发工具链 —— 怎么写插件、发插件
@@ -64,18 +66,18 @@ flowchart LR
 
 | 仓库 | 一句话 |
 | --- | --- |
-| [dsh-github-intelligence](https://github.com/zoahdev/dsh-github-intelligence) | 160+ 只读工具 × 15 个生态（GitHub/GitLab/npm/PyPI/...），带缓存 |
+| [dsh-github-intelligence](https://github.com/zoahdev/dsh-github-intelligence) | 196+ 只读工具 × 16 个生态（GitHub/GitLab/npm/PyPI/ArXiv/...），带缓存 |
 | [dsh-github-release-radar](https://github.com/zoahdev/dsh-github-release-radar) | Release/star/仓库搜索雷达，无需 API key |
 | [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) | 生态地图：精选目录 + 周报 + 发布兼容性 + 补丁验证 |
 | [dsh-ecosystem-status](https://github.com/zoahdev/dsh-ecosystem-status) | 自动生成的状态仪表盘 |
-| [dsh-docs](https://github.com/zoahdev/dsh-docs) | 官方文档提案 + 21+ 张可 cherry-pick 的上游补丁 |
+| [dsh-docs](https://github.com/zoahdev/dsh-docs) | 官方文档提案 + 42 张可 cherry-pick 的上游补丁 |
 | [dsh-tutorials](https://github.com/zoahdev/dsh-tutorials) | 45 页双语教程：入门/架构/插件开发/发布自检/贡献路线 |
 
 ### ⑥ 官方上游
 
 | 仓库 | 一句话 |
 | --- | --- |
-| [deepseek-harness](https://github.com/zoahdev/deepseek-harness) | 官方仓库 fork，带着 21+ 张补丁（根因 + 回归测试，等 PR 通道开） |
+| [deepseek-harness](https://github.com/zoahdev/deepseek-harness) | 官方仓库 fork，带着 42 张补丁（根因 + 回归测试，等 PR 通道开） |
 
 ## 新手从哪开始
 
@@ -120,7 +122,7 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 - `dsh-plugin` topic: 2,958 repos (noisy: includes skills, desktops, and unrelated projects)
 - Curated lists: 8+ (crowded — see [docs/plugins.md](./docs/plugins.md#curated-lists))
 - Marketplaces/registries: dsh-marketplace (PR-based), dsh-market (in-DSH), several web marketplaces
-- Tracked upstream bugs: 16 (16 cherry-pick-ready patches, see [patch list](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md))
+- Tracked upstream bugs: 42 (42 cherry-pick-ready patches, see [patch list](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md))
 - Gaps: 8 (see [Gap radar](./docs/weekly-2026-08-15.md#gap-radar))
 
 ## The zoahdev suite (fully verified)
@@ -129,17 +131,17 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 |---|---|---|
 | [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe) | Steam-style market + 563-plugin registry + in-harness install | ✅ check-registry, CI, awesome #492 merged |
 | [dsh-rule-evolve](https://github.com/zoahdev/dsh-rule-evolve) | Verification-driven self-evolution + badge | ✅ 18 tests, awesome #560 merged |
-| [dsh-plugin-doctor](https://github.com/zoahdev/dsh-plugin-doctor) | Pre-publish preflight + env explain + entry-points + profile-shadow | ✅ 40 tests + dsh-doctor/v1 contract |
+| [dsh-plugin-doctor](https://github.com/zoahdev/dsh-plugin-doctor) | Pre-publish preflight + env explain + entry-points + profile-shadow | ✅ 49 tests + dsh-doctor/v1 contract |
 | [dsh-plugin-doctor-action](https://github.com/zoahdev/dsh-plugin-doctor-action) | One-line GitHub Action CI gate for plugin authors | ✅ @v1, Release tarball |
 | [dsh-shelf](https://github.com/zoahdev/dsh-shelf) | Session lifecycle: web panel + CLI + verify/rescue | ✅ 14 tests |
 | [dsh-pet-evolve](https://github.com/zoahdev/dsh-pet-evolve) | The pet that grows with your agent | ✅ 13 tests |
-| [dsh-github-intelligence](https://github.com/zoahdev/dsh-github-intelligence) | 195+ tools × 15 ecosystems + weekly digest | ✅ real-API smoke, 44 tests, CI |
+| [dsh-github-intelligence](https://github.com/zoahdev/dsh-github-intelligence) | 196+ tools × 16 ecosystems + weekly digest | ✅ real-API smoke, 47 tests, CI |
 | [dsh-plugin-search](https://github.com/zoahdev/dsh-plugin-search) | Plugin discovery inside DSH | ✅ 6 tests, visibility, CI |
 | [dsh-github-release-radar](https://github.com/zoahdev/dsh-github-release-radar) | Releases/stars/tags radar | ✅ 16 tests, visibility, CI |
 | [dsh-plugin-template](https://github.com/zoahdev/dsh-plugin-template) | Verified template with peer guard | ✅ CI |
 | [dsh-tutorials](https://github.com/zoahdev/dsh-tutorials) | 45-page bilingual tutorial site | ✅ Pages live |
-| [dsh-docs](https://github.com/zoahdev/dsh-docs) | Official-docs gap specs + upstream patch list | ✅ 15 patches documented |
-| [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) | Map + weekly + release-compat + patch-verify | ✅ 15-branch patch-verify bot |
+| [dsh-docs](https://github.com/zoahdev/dsh-docs) | Official-docs gap specs + upstream patch list | ✅ 42 patches documented |
+| [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) | Map + weekly + release-compat + patch-verify | ✅ 42-branch patch-verify bot |
 
 ## Contribute
 
