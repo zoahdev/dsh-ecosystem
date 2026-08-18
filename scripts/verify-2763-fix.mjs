@@ -36,18 +36,43 @@ function run(cmd, args, cwd = WORK) {
   return { status: r.status ?? -1, out: `${r.stdout ?? ''}${r.stderr ?? ''}` }
 }
 
-async function main() {
-  const tags = JSON.parse(run(NPM, ['view', '@deepseek-ai/dsh-tools', 'dist-tags', '--json']).out)
-  const latest = tags.latest ?? ''
-  const date = new Date().toISOString().slice(0, 10)
-  console.log(`dsh-tools latest: ${latest} (next: ${tags.next ?? '-'})`)
+// Official family whose latest was stuck at 0.0.1-rc.1 on 2026-08-19 (12/14 sampled).
+const FAMILY = ['dsh-tools', 'dsh-base', 'dsh-web-app', 'dsh-headless', 'dsh-llm', 'dsh-session', 'dsh-llm-pi-ai', 'dsh-sandbox', 'dsh-subprocess', 'dsh-client-connection', 'dsh-system-prompt', 'dsh-scope', 'dsh-settings', 'dsh-host-webserver']
 
-  if (latest === BROKEN_LATEST) {
-    console.log('NOT FIXED YET — #2763 still active. No re-scan needed.')
+async function familyStatus() {
+  const rows = []
+  for (const pkg of FAMILY) {
+    try {
+      const res = await fetch(`https://registry.npmjs.org/@deepseek-ai%2F${pkg}`, {
+        headers: { accept: 'application/vnd.npm.install-v1+json' },
+      })
+      if (!res.ok) { rows.push({ pkg, error: `HTTP ${res.status}` }); continue }
+      const data = await res.json()
+      const tags = data['dist-tags'] ?? {}
+      rows.push({ pkg, latest: tags.latest ?? null, next: tags.next ?? null })
+    } catch (e) {
+      rows.push({ pkg, error: String(e) })
+    }
+  }
+  return rows
+}
+
+async function main() {
+  const date = new Date().toISOString().slice(0, 10)
+  const status = await familyStatus()
+  const stuck = status.filter((r) => r.latest === BROKEN_LATEST)
+  const moved = status.filter((r) => r.latest !== undefined && r.latest !== BROKEN_LATEST)
+  console.log(`official family check (${status.length} packages):`)
+  for (const r of status) {
+    console.log(`  ${r.pkg}: latest=${r.latest ?? '?'} next=${r.next ?? '-'}${r.error ? ` ERROR ${r.error}` : ''}`)
+  }
+  const tools = status.find((r) => r.pkg === 'dsh-tools')
+  if (stuck.length === status.length || (tools && tools.latest === BROKEN_LATEST)) {
+    console.log(`NOT FIXED YET — ${stuck.length}/${status.length} family packages still stuck at ${BROKEN_LATEST}. No re-scan needed.`)
     return
   }
 
-  console.log('FIX DETECTED — re-scanning registry and leaderboard...')
+  console.log(`FIX DETECTED — ${moved.length}/${status.length} family packages moved off ${BROKEN_LATEST}. Re-scanning registry and leaderboard...`)
   const scan = run('node', [path.join(WORK, 'full-registry-scan.mjs')])
   const scanFile = path.join(OUT, `full-registry-impact-${date}.txt`)
   writeFileSync(scanFile, scan.out, 'utf8')
