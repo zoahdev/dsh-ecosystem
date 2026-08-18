@@ -16,6 +16,7 @@
 | dsh-llms-forge | zoahdev | llms.txt generator for plugin repos (AI-readable discovery, read-only by default) | 0 | ✅ |
 | dsh-cn-boot | zoahdev | China-network bootstrap: probes/mirrors/proxy recommendations + generated script | 0 | ✅ |
 | modlens | liustack | vision plugin | 1,480 | ○ |
+| dsh-timesheet | zoahdev | turn-based time tracking from session logs (per-day/project/provider/source, tool calls, failures, TTFT) | 0 | ✅ |
 | dsh-vision-toolkit | Anionex | OCR/UI vision native | 381 | ○ |
 | dsh-vision-router | ysr666 | free vision chain | 89 | ○ |
 | dsh-find-plugins | Nagi-ovo | skill that finds/installs/verifies plugins | 78 | ○ |
