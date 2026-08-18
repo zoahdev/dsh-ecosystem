@@ -18,6 +18,7 @@
 | modlens | liustack | vision plugin | 1,480 | ○ |
 | dsh-timesheet | zoahdev | turn-based time tracking from session logs (per-day/project/provider/source, tool calls, failures, TTFT) | 0 | ✅ |
 | dsh-vision-toolkit | Anionex | OCR/UI vision native | 381 | ○ |
+| dsh-discussions-radar | zoahdev | official GitHub Discussions radar (Ideas/Q&A/Show Your Plugins!/General/Announcements) | 0 | ✅ |
 | dsh-vision-router | ysr666 | free vision chain | 89 | ○ |
 | dsh-find-plugins | Nagi-ovo | skill that finds/installs/verifies plugins | 78 | ○ |
 | dsh-market | dsh-market | in-DSH plugin market (browse/search/install) | 141 | ○ |
