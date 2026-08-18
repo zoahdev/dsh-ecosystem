@@ -143,6 +143,10 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 | [dsh-docs](https://github.com/zoahdev/dsh-docs) | Official-docs gap specs + upstream patch list | ✅ 42 patches documented |
 | [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) | Map + weekly + release-compat + patch-verify | ✅ 42-branch patch-verify bot |
 
+## Live dashboard
+
+- [Ecosystem health dashboard](https://zoahdev.github.io/dsh-ecosystem/ecosystem-health-dashboard.html) — supply-chain scan, #2763 impact, quality leaderboard v0 in one page.
+
 ## Contribute
 
 - Know a plugin that should be in the catalog? Open an issue or PR with the repo URL.
