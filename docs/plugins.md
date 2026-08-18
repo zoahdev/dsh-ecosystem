@@ -104,3 +104,4 @@
 > ⚠️ Marketplace naming is crowded: at least two projects share the "plugin doctor" name and several share "plugin search". Check `npm view <name>` and the repo owner before installing anything.
 
 - [dsh-pet-evolve](https://github.com/zoahdev/dsh-pet-evolve) - 会随 agent 成长的宠物（Show and tell #1984）
+| dsh-quality-score | zoahdev | plugin quality scorecard (0-100, 6 components, batch leaderboard) | 0 | ✅ |
