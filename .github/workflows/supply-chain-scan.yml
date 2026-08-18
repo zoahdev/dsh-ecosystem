@@ -1,0 +1,32 @@
+name: supply-chain-scan
+
+on:
+  schedule:
+    # Weekly: Monday 02:30 UTC
+    - cron: '30 2 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run full-registry #2763 impact scan
+        id: scan
+        run: |
+          DATE=$(date +%F)
+          node scripts/full-registry-scan.mjs --registry-url=https://raw.githubusercontent.com/zoahdev/dsh-subscribe/main/registry.json > docs/ecosystem-supply-chain-health-${DATE}.md
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+      - name: Commit snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/ecosystem-supply-chain-health-*.md scripts/full-registry-scan.mjs
+          git commit -m "health: supply-chain snapshot ${{ steps.scan.outputs.date }}" || echo "no changes"
+          git push

@@ -11,6 +11,8 @@
 import { readFileSync } from 'node:fs'
 import { satisfies, isRegistryRange } from './dsh-dep-audit/lib/version.js'
 
+// Registry source: --registry-url <url> (fetched) or a local JSON path.
+const REGISTRY_URL = process.argv.find((a) => a.startsWith('--registry-url='))?.slice('--registry-url='.length)
 const REGISTRY_PATH = process.argv[2] ?? './dsh-subscribe/registry.json'
 const CONCURRENCY = 6
 
@@ -53,8 +55,17 @@ function dshToolsRange(versionMeta) {
   return null
 }
 
+async function loadRegistry() {
+  if (REGISTRY_URL !== undefined) {
+    const res = await fetch(REGISTRY_URL)
+    if (!res.ok) throw new Error(`registry fetch failed: HTTP ${res.status}`)
+    return await res.json()
+  }
+  return JSON.parse(readFileSync(REGISTRY_PATH, 'utf8'))
+}
+
 async function main() {
-  const reg = JSON.parse(readFileSync(REGISTRY_PATH, 'utf8'))
+  const reg = await loadRegistry()
   const plugins = reg.plugins.filter((p) => p.install?.target === 'npm')
   const names = [...new Set(plugins.map((p) => p.install.spec))]
 
