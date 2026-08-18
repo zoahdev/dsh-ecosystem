@@ -2,7 +2,7 @@
 
 > 由 [zoahdev](https://github.com/zoahdev) 维护。这里串起我在 DeepSeek Harness（dsh）生态做的全部东西——每个仓库是干嘛的、彼此什么关系、新手从哪开始。**给中文读者的一页地图。**
 
-**最新状态（2026-08）：** 42 个上游补丁 · 7 个 npm 包 · 8 个项目进 awesome-dsh-plugin · 10 个进 awesome-deepseek-harness · 注册表 908 插件 · 官方 RFC [#1814](https://github.com/deepseek-ai/deepseek-harness/discussions/1814)（dsh plugin check / doctor 采纳）与 [#2486](https://github.com/deepseek-ai/deepseek-harness/discussions/2486)（补丁队列）。
+**最新状态（2026-08）：** 42 个上游补丁 · 7 个 npm 包 · 9 个插件（npm + GitHub + CI 全绿）；收录 PR：awesome-dsh-plugin 8 个 + awesome-deepseek-harness 1 个（gate 转绿待合并） · 注册表 917 插件（325 可 npm 安装，质量评分已全覆盖） · 官方 RFC [#1814](https://github.com/deepseek-ai/deepseek-harness/discussions/1814)（dsh plugin check / doctor 采纳）与 [#2486](https://github.com/deepseek-ai/deepseek-harness/discussions/2486)（补丁队列）。
 
 ## 一句话看懂关系
 
@@ -116,6 +116,13 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 | 🟡 signals partial | Some signals present (release or CI), not fully audited |
 | ○ not audited | Listed from the topic/awesome/marketplace survey; quality not yet verified |
 
+## Quick stats (2026-08-19)
+
+- Official: `deepseek-ai/deepseek-harness` — 0.1.0-rc.7 (HEAD 99f6f02)
+- Official discussions: 3000+ threads; zoahdev replies: 20+ evidence-grade (triage: `scripts/discussion-triage.mjs`, daily CI: `.github/workflows/discussion-triage.yml`)
+- #2763 (broken `latest` dist-tag): still unfixed, 78/325 plugins affected; verifier: `scripts/verify-2763-fix.mjs`
+- Registry (dsh-subscribe): 917 plugins, 325 npm-installable, 78 B-grade tied to #2763 alone
+
 ## Quick stats (2026-08-15)
 
 - Official: `deepseek-ai/deepseek-harness` — 103k★, 0.1.0-rc.6
@@ -145,12 +152,11 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 
 ## Live dashboard
 
-- [Ecosystem health dashboard](https://zoahdev.github.io/dsh-ecosystem/ecosystem-health-dashboard.html) — supply-chain scan, #2763 impact, quality leaderboard v0 in one page.
+- [Ecosystem health dashboard](https://zoahdev.github.io/dsh-ecosystem/ecosystem-health-dashboard.html) — supply-chain scan, #2763 impact, quality leaderboard v1 (325 plugins, 240A/84B/1F) in one page.
 
 ## #2763 fix-day verifier
 
-Run \
-ode scripts/verify-2763-fix.mjs\ — detects when the official \latest\ dist-tag changes, then re-scans the registry, re-scores the leaderboard, and writes the impact-drop report.
+Run `node scripts/verify-2763-fix.mjs` — detects when the official `latest` dist-tag changes, then re-scans the registry, re-scores the leaderboard, and writes the impact-drop report.
 
 ## Contribute
 
