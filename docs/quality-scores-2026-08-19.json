@@ -62,7 +62,7 @@
     "name": "dsh-dep-audit",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -120,7 +120,7 @@
     "name": "dsh-llms-forge",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -178,7 +178,7 @@
     "name": "dsh-cn-boot",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -236,7 +236,7 @@
     "name": "dsh-timesheet",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -294,7 +294,7 @@
     "name": "dsh-discussions-radar",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -352,7 +352,7 @@
     "name": "dsh-readme-forge",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -410,7 +410,7 @@
     "name": "dsh-firstrun",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -468,7 +468,7 @@
     "name": "dsh-disk-audit",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -526,14 +526,14 @@
     "name": "dsh-quality-score",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
         "name": "Manifest completeness",
         "max": 30,
         "earned": 30,
-        "note": "version 0.1.2"
+        "note": "version 0.1.3"
       },
       {
         "id": "peer-resolvable",
@@ -547,7 +547,7 @@
         "name": "Dist-tag health",
         "max": 15,
         "earned": 15,
-        "note": "latest=0.1.2"
+        "note": "latest=0.1.3"
       },
       {
         "id": "dead-ranges",
@@ -1556,7 +1556,7 @@
     "name": "dsh-diagram",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -1668,7 +1668,7 @@
     "name": "dsh-file-upload",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -1780,7 +1780,7 @@
     "name": "@huiliyi37/dsh-tianshu-tui",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -1892,7 +1892,7 @@
     "name": "dsh-splash-launcher",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -2274,7 +2274,7 @@
     "name": "@lemcae/dsh-balance",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -2872,7 +2872,7 @@
     "name": "dsh-better-sidebar",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -2930,7 +2930,7 @@
     "name": "@open-agfs/dsh-agfs",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -3042,7 +3042,7 @@
     "name": "dsh-plugin-genui",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -3644,7 +3644,7 @@
     "name": "dsh-codex-timeline",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -4458,7 +4458,7 @@
     "name": "@zseven-w/dsh-openpencil",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -5218,7 +5218,7 @@
     "name": "dsh-codex-connect",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -5546,7 +5546,7 @@
     "name": "dsh-codex-auth",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -5604,7 +5604,7 @@
     "name": "@wnjxyk/dsh-codex-oauth",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -5716,7 +5716,7 @@
     "name": "task-passport",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -5774,7 +5774,7 @@
     "name": "dsh-plugin-solo-thinking",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -5832,7 +5832,7 @@
     "name": "dsh-agent-message",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -6214,7 +6214,7 @@
     "name": "dsh-chat-import",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -6650,7 +6650,7 @@
     "name": "dsh-period-report",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -6978,7 +6978,7 @@
     "name": "dsh-memory-vault",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -7252,7 +7252,7 @@
     "name": "dsh-unified-agent-memory",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -7364,7 +7364,7 @@
     "name": "dsh-memento",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -7584,7 +7584,7 @@
     "name": "@vectorize-io/hindsight-coding-agents",
     "ok": false,
     "score": 92,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -7640,7 +7640,7 @@
     "name": "dsh-flomo",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -7698,7 +7698,7 @@
     "name": "dsh-notion-connector",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -8026,7 +8026,7 @@
     "name": "dsh-monitor",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -8246,7 +8246,7 @@
     "name": "dsh-web-search-pro",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -8412,7 +8412,7 @@
     "name": "dsh-blender",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -8470,7 +8470,7 @@
     "name": "dsh-wechat-mp",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -8528,7 +8528,7 @@
     "name": "dsh-free-search",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -8802,7 +8802,7 @@
     "name": "dsh-remote",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -9238,7 +9238,7 @@
     "name": "dsh-paste-to-path",
     "ok": false,
     "score": 92,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -9348,7 +9348,7 @@
     "name": "dsh-office-tools",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -9460,7 +9460,7 @@
     "name": "dsh-ai4scholar",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -9518,7 +9518,7 @@
     "name": "dsh-plugin-grok2api-media-tool",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -9630,7 +9630,7 @@
     "name": "dsh-bash-terminal",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -9742,7 +9742,7 @@
     "name": "dsh-koboldcpp-hands",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -9800,7 +9800,7 @@
     "name": "dsh-unsloth-hands",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -9858,7 +9858,7 @@
     "name": "@moguiyu/dsh-tool-tavily-search",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -9916,7 +9916,7 @@
     "name": "@yejiming/dsh-data-agent",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -10082,7 +10082,7 @@
     "name": "dsh-checkpoint-rewind",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -10140,7 +10140,7 @@
     "name": "dsh-lsp-actions",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -10198,7 +10198,7 @@
     "name": "dsh-us-stocks",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -10256,7 +10256,7 @@
     "name": "dsh-better-edit",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -10422,7 +10422,7 @@
     "name": "dsh-codex-tools",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -10750,7 +10750,7 @@
     "name": "dsh-s1",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -10862,7 +10862,7 @@
     "name": "dsh-deeptutor",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -11136,7 +11136,7 @@
     "name": "dsh-git-worktree",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -11306,7 +11306,7 @@
     "name": "dsh-tool-writing",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -11472,7 +11472,7 @@
     "name": "dsh-plugin-writing-guard",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -11692,7 +11692,7 @@
     "name": "@yun520-1/deepseek-heartflow",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -11858,7 +11858,7 @@
     "name": "dsh-continual-evolve",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -12456,7 +12456,7 @@
     "name": "dsh-tool-orchestrate",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -12568,7 +12568,7 @@
     "name": "@opendsh/dsh-plugin-scheduled-tasks",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -12855,7 +12855,7 @@
     "name": "dsh-approval-llm",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -12967,7 +12967,7 @@
     "name": "dsh-paperlab",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -13025,7 +13025,7 @@
     "name": "dsh-agent-relay",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -13137,7 +13137,7 @@
     "name": "@nyantused/folio-dsh-tools",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -13195,7 +13195,7 @@
     "name": "dsh-auto-review",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -13253,7 +13253,7 @@
     "name": "dsh-doublecheck",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -13419,7 +13419,7 @@
     "name": "@dsh-suite/plugin-team-board",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -13801,7 +13801,7 @@
     "name": "dsh-acp-enhanced",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -14075,7 +14075,7 @@
     "name": "@luzhengyangtx/dsh-telegram-duty",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -14241,7 +14241,7 @@
     "name": "dsh-voice-call",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -14731,7 +14731,7 @@
     "name": "dsh-ticktick",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -15005,7 +15005,7 @@
     "name": "dsh-restart",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -15225,7 +15225,7 @@
     "name": "dsh-security-guard",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -15499,7 +15499,7 @@
     "name": "dsh-testkit",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -15719,7 +15719,7 @@
     "name": "dsh-mcp-lens",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -16047,7 +16047,7 @@
     "name": "dsh-mcp-panel",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -16159,7 +16159,7 @@
     "name": "dsh-permission-rules",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
@@ -16761,7 +16761,7 @@
     "name": "dsh-prometheus",
     "ok": false,
     "score": 90,
-    "grade": "A",
+    "grade": "B",
     "components": [
       {
         "id": "manifest",
