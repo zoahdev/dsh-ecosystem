@@ -219,6 +219,7 @@ workflow is the weakest large category; security (the ecosystem's own tooling) s
 - Scorecard: 6 components (manifest 20 / peer-resolvable 20 / dist-tag 15 / dead-ranges 15 / freshness 10 / dsh-tools peer 10). v0 = 3 known components (max 40).
 - Full scoring ships with dsh-quality-score (--batch-registry). Tools: dsh-ecosystem/scripts/full-registry-scan.mjs, dsh-quality-score.
 - A single official dist-tag fix (latest -> 0.1.0-rc.7) fixes 78/78 affected plugins (100%); remaining 6 B + 1 F are other root causes (4 dist-tag, 2 single-issue, 1 unreachable).
+- Official-family extension (2026-08-19): every @deepseek-ai/* declared range checked with the dsh-dep-audit semver engine — **160/325 plugins** affected by bad latest (dsh-tools 78 + 82 others); one family-wide dist-tag fix (all latest=0.0.1-rc.1 -> next) restores **100**, leaving 60 (exact pins / rc.3-rc.5 series / dsh-agent rc.6). Script: scripts/official-family-impact.mjs (--what-if).
 </pre>
 </div>
 
