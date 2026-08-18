@@ -60,3 +60,16 @@ pm install <name>) can resolve a version line different from the actively develo
 - "dsh-tools peer affected" means the plugin declares a peer range for @deepseek-ai/dsh-tools that the broken latest (0.0.1-rc.1) does NOT satisfy; fresh installs should pin @next / the matching rc.
 - Dead ranges in the latest version are concentrated in the official 0.0.1-rc.1 line (pre-rename package names that 404 on npm).
 - dsh-web-ui / oh-dsh / dsh-compass are not on npm (distributed from GitHub / monorepo paths).
+
+## Full-registry impact — 2026-08-18 (all npm-installable plugins)
+
+Fast-mode scan of the live dsh-subscribe registry (916 plugins, 324 npm-installable):
+
+- **100** plugins declare an @deepseek-ai/dsh-tools range (96 peer, 4 dependency)
+- **77 are affected** by the broken `latest` (0.0.1-rc.1) — their declared range is not satisfied by the default install resolution
+- 23 not affected, 0 fetch failures
+
+Affected list (name | source | declared range | plugin latest):
+
+| Plugin | source | declared range |
+|---|---|---|
