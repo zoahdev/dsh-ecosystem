@@ -151,3 +151,12 @@ Affected list (name | source | declared range):
 | dsh-permission-rules | peer | 0.1.0-rc.6 |
 | dsh-prometheus | peer | 0.1.0-rc.6 |
 
+
+## What-if: official `latest` → 0.1.0-rc.7
+
+Computed against the 77 affected plugins (same snapshot):
+
+- **69 / 77 would be fixed** — their declared ranges (`^0.1.0-rc.6`, `>=0.1.0-rc.5`, etc.) are satisfied by 0.1.0-rc.7
+- **8 remain broken** because they pin the exact version `0.1.0-rc.6` (an exact pin, not a caret range): dsh-diagram, dsh-codex-connect, dsh-checkpoint-rewind, dsh-git-worktree, dsh-doublecheck, dsh-mcp-panel, dsh-permission-rules, dsh-prometheus
+
+So a single official dist-tag fix (`latest` → `0.1.0-rc.7`) resolves 89% of the ecosystem impact; the remaining 8 are plugin-side exact pins that should be loosened to `^0.1.0-rc.6`.
