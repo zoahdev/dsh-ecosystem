@@ -101,7 +101,7 @@ flowchart LR
 
 DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem exploded in days: 2,958 repos carry the `dsh-plugin` topic, at least 8 curated lists exist, and new plugins appear hourly. Nobody was tracking **quality signals, bug status, and gaps** in one place. This map is that place.
 
-- **[Weekly editions](./docs/)** — what shipped, what broke, what got fixed.
+- **[Weekly editions](./docs/)** — [2026-08-19 consolidated](./docs/weekly-2026-08-19.md) — what shipped, what broke, what got fixed.
 - **[Curated plugin catalog](./docs/plugins.md)** — real dsh-installable plugins with category, author, visibility, and (where audited) verification signals.
 - **Bug radar** — known upstream bugs with status, root cause, and fixes/workarounds.
 - **Gap radar** — what the ecosystem is missing (and who is building it).
