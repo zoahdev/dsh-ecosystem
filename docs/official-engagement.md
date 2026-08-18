@@ -47,7 +47,7 @@
 - #2107 深度分析：web profile 默认禁用 compaction + meter 低估双层根因
 
 ### 生态地图
-- Week 2 周报已发布（注册表 908、10 个 awesome 合并、doctor 契约 5 实现收敛）
+- Week 2 周报已发布（注册表 917、10 个 awesome 合并、doctor 契约 5 实现收敛）
 - dsh-ecosystem-status 仪表盘每日刷新（42 补丁 / 908 插件 / 21 已验证）
 
 ### 分发
@@ -56,7 +56,7 @@
 - 掘金/知乎一键发布包已就绪（3 篇复制即发长文）
 ## 已实现的生态基础设施
 
-- **dsh-subscribe v0.3**：908 插件注册表（21 verified）+ 中英商店页 + 零依赖 CLI + in-harness 市场（一键安装/卸载/更新/approve-builds，同源 POST + curated-only）
+- **dsh-subscribe v0.3**：917 插件注册表（30 verified）+ 中英商店页 + 零依赖 CLI + in-harness 市场（一键安装/卸载/更新/approve-builds，同源 POST + curated-only）
 - **dsh-plugin-doctor v1.10.0**：`check` 子命令（RFC #1846 表面）、preflight、`--profile`（profile-shadow + manifest-bom + large-files/#1859）、`--env`（win-bash，#1856）、`pre-execute-side-effects` lint（#1863）、dsh-doctor/v1 envelope、契约验收 harness
 - **dsh-ecosystem**：生态地图 + 周报 + **官方 release 兼容性报告自动生成**（npm dist-tags 变动自动出报告）
 - **dsh-docs**：官方文档 PR 预置（publish / adding-a-package / troubleshooting）+ 两份规格 + RFC 存档

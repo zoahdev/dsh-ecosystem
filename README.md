@@ -136,7 +136,7 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 
 | Repo | What | Verification |
 |---|---|---|
-| [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe) | Steam-style market + 563-plugin registry + in-harness install | ✅ check-registry, CI, awesome #492 merged |
+| [dsh-subscribe](https://github.com/zoahdev/dsh-subscribe) | Steam-style market + 917-plugin registry + in-harness install | ✅ check-registry, CI, awesome #492 merged |
 | [dsh-rule-evolve](https://github.com/zoahdev/dsh-rule-evolve) | Verification-driven self-evolution + badge | ✅ 18 tests, awesome #560 merged |
 | [dsh-plugin-doctor](https://github.com/zoahdev/dsh-plugin-doctor) | Pre-publish preflight + env explain + entry-points + profile-shadow | ✅ 49 tests + dsh-doctor/v1 contract |
 | [dsh-plugin-doctor-action](https://github.com/zoahdev/dsh-plugin-doctor-action) | One-line GitHub Action CI gate for plugin authors | ✅ @v1, Release tarball |
