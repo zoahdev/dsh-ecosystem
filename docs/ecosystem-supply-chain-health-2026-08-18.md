@@ -69,37 +69,85 @@ Fast-mode scan of the live dsh-subscribe registry (916 plugins, 324 npm-installa
 - **77 are affected** by the broken `latest` (0.0.1-rc.1) — their declared range is not satisfied by the default install resolution
 - 23 not affected, 0 fetch failures
 
-Affected list (name | source | declared range | plugin latest):
+Affected list (name | source | declared range):
 
 | Plugin | source | declared range |
 |---|---|---|
-| dsh-readme-forge | peer | ^0.1.0-rc.6 |
-| dsh-discussions-radar | peer | ^0.1.0-rc.6 |
+| dsh-dep-audit | peer | ^0.1.0-rc.6 |
+| dsh-cn-boot | peer | ^0.1.0-rc.6 |
 | dsh-llms-forge | peer | ^0.1.0-rc.6 |
 | dsh-firstrun | peer | ^0.1.0-rc.6 |
 | dsh-disk-audit | peer | ^0.1.0-rc.6 |
-| dsh-cn-boot | peer | ^0.1.0-rc.6 |
 | dsh-timesheet | peer | ^0.1.0-rc.6 |
-| dsh-dep-audit | peer | ^0.1.0-rc.6 |
+| dsh-readme-forge | peer | ^0.1.0-rc.6 |
+| dsh-discussions-radar | peer | ^0.1.0-rc.6 |
 | dsh-diagram | peer | 0.1.0-rc.6 |
-| dsh-file-upload | peer | ^0.1.0-rc.6 |
 | dsh-splash-launcher | peer | ^0.1.0-rc.6 |
+| dsh-file-upload | peer | ^0.1.0-rc.6 |
 | @huiliyi37/dsh-tianshu-tui | peer | ^0.1.0-rc.6 |
 | @lemcae/dsh-balance | peer | ^0.1.0-rc.5 |
 | dsh-better-sidebar | peer | ^0.1.0-rc.7 |
+| @open-agfs/dsh-agfs | peer | ^0.1.0-rc.6 |
 | dsh-plugin-genui | peer | ^0.1.0-rc.6 |
 | dsh-codex-timeline | peer | 0.1.0-rc.7 |
-| @open-agfs/dsh-agfs | peer | ^0.1.0-rc.6 |
 | @zseven-w/dsh-openpencil | peer | ^0.1.0-rc.6 |
+| dsh-codex-auth | peer | ^0.1.0-rc.6 |
 | dsh-codex-connect | peer | 0.1.0-rc.6 |
 | @wnjxyk/dsh-codex-oauth | dep | ^0.1.0-rc.6 |
-| dsh-codex-auth | peer | ^0.1.0-rc.6 |
 | task-passport | peer | >=0.1.0-rc.5 |
-| dsh-plugin-solo-thinking | peer | ^0.1.0-rc.6 |
 | dsh-agent-message | peer | >=0.1.0-rc.6 <0.2.0 |
+| dsh-plugin-solo-thinking | peer | ^0.1.0-rc.6 |
 | dsh-chat-import | peer | ^0.1.0-rc.6 |
 | dsh-period-report | peer | ^0.1.0-rc.6 |
 | dsh-memory-vault | peer | ^0.1.0-rc.6 |
 | dsh-unified-agent-memory | peer | ^0.1.0-rc.6 |
-| dsh-flomo | peer | ^0.1.0-rc.6 |
 | dsh-memento | peer | >=0.1.0-rc.6 |
+| dsh-flomo | peer | ^0.1.0-rc.6 |
+| dsh-notion-connector | peer | ^0.1.0-rc.6 |
+| dsh-monitor | peer | ^0.1.0-rc.6 |
+| dsh-free-search | peer | >=0.1.0-rc.6 |
+| dsh-web-search-pro | dep | ^0.1.0-rc.6 |
+| dsh-wechat-mp | peer | >=0.1.0-rc.6 |
+| dsh-blender | peer | ^0.1.0-rc.6 |
+| dsh-remote | peer | ^0.1.0-rc.6 |
+| dsh-ai4scholar | peer | >=0.1.0-rc.6 |
+| dsh-office-tools | peer | ^0.1.0-rc.6 |
+| dsh-plugin-grok2api-media-tool | peer | ^0.1.0-rc.7 |
+| dsh-unsloth-hands | peer | >=0.1.0-rc.2 |
+| @moguiyu/dsh-tool-tavily-search | peer | ^0.1.0-rc.7 |
+| @yejiming/dsh-data-agent | peer | ^0.1.0-rc.7 |
+| dsh-koboldcpp-hands | peer | >=0.1.0-rc.2 |
+| dsh-bash-terminal | peer | ^0.1.0-rc.6 |
+| dsh-us-stocks | peer | >=0.0.1-rc.5 <0.1.0 |
+| dsh-lsp-actions | peer | >=0.1.0-rc.6 |
+| dsh-codex-tools | peer | ^0.1.0-rc.6 |
+| dsh-better-edit | peer | ^0.1.0-rc.6 |
+| dsh-checkpoint-rewind | peer | 0.1.0-rc.6 |
+| dsh-deeptutor | peer | ^0.1.0-rc.6 |
+| dsh-s1 | peer | ^0.1.0-rc.6 |
+| dsh-tool-writing | peer | ^0.1.0-rc.6 |
+| dsh-git-worktree | dep | 0.1.0-rc.6 |
+| dsh-plugin-writing-guard | peer | ^0.1.0-rc.6 |
+| @yun520-1/deepseek-heartflow | peer | ^0.1.0-rc.6 |
+| dsh-continual-evolve | peer | ^0.1.0-rc.6 |
+| dsh-tool-orchestrate | peer | ^0.1.0-rc.6 |
+| @opendsh/dsh-plugin-scheduled-tasks | peer | ^0.1.0-rc.6 |
+| dsh-approval-llm | peer | ^0.1.0-rc.7 |
+| dsh-agent-relay | peer | ^0.1.0-rc.6 |
+| @nyantused/folio-dsh-tools | peer | ^0.1.0-rc.6 |
+| dsh-auto-review | peer | 0.1.0-rc.7 |
+| dsh-doublecheck | peer | 0.1.0-rc.6 |
+| @dsh-suite/plugin-team-board | peer | ^0.1.0-rc.6 |
+| dsh-acp-enhanced | peer | ^0.1.0-rc.6 |
+| @luzhengyangtx/dsh-telegram-duty | peer | ^0.1.0-rc.5 |
+| dsh-voice-call | peer | ^0.1.0-rc.6 |
+| dsh-paperlab | peer | ^0.1.0-rc.6 |
+| dsh-ticktick | peer | ^0.1.0-rc.6 |
+| dsh-restart | dep | ^0.1.0-rc.6 |
+| dsh-security-guard | peer | ^0.1.0-rc.6 |
+| dsh-testkit | peer | >=0.1.0-rc.6 <0.2.0 |
+| dsh-mcp-lens | peer | ^0.1.0-rc.6 |
+| dsh-mcp-panel | peer | 0.1.0-rc.6 |
+| dsh-permission-rules | peer | 0.1.0-rc.6 |
+| dsh-prometheus | peer | 0.1.0-rc.6 |
+
