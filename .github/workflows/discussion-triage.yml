@@ -1,0 +1,40 @@
+name: discussion-triage
+
+on:
+  schedule:
+    # Daily 01:10 UTC — community support queue for the official dsh discussions
+    - cron: '10 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run discussion triage (needs DISCUSSIONS_TOKEN)
+        id: triage
+        env:
+          GH_TOKEN: ${{ secrets.DISCUSSIONS_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "DISCUSSIONS_TOKEN not set — skipping. Enable with:"
+            echo "  gh secret set DISCUSSIONS_TOKEN --repo zoahdev/dsh-ecosystem --body <token-with-repo-scope>"
+            echo "date=$(date +%F)" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          DATE=$(date +%F)
+          node scripts/discussion-triage.mjs --all > docs/discussion-triage-${DATE}.md
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+      - name: Commit snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/discussion-triage-*.md scripts/discussion-triage.mjs
+          git commit -m "triage: community support queue ${{ steps.triage.outputs.date }}" || echo "no changes"
+          git push
