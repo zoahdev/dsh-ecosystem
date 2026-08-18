@@ -1,6 +1,6 @@
 # zoahdev × DeepSeek Harness — official engagement dossier
 
-> 一页纸记录 zoahdev 在官方讨论区/上游仓库的全部实质贡献。每条都有可点击链接与真实验证；更新于 2026-08-17。
+> 一页纸记录 zoahdev 在官方讨论区/上游仓库的全部实质贡献。每条都有可点击链接与真实验证；更新于 2026-08-19。
 
 ## Bug 根因 + 修复（cherry-pick 就绪）
 
@@ -84,3 +84,46 @@
 
 - star：dsh-subscribe 1、dsh-github-intelligence 1（其余 0）；渠道：20+ 官方讨论帖、2 个收录 PR（awesome #492 已合并）、35 页教程、6 个 CI 全绿仓库
 - 未验证/未完成：官方 PR 通道未开（补丁就绪待提交）；npm 发布待用户 `NPM_TOKEN`；moonquake2004 契约适配待对方接入
+
+---
+
+## 最新动态（2026-08-18 → 08-19）
+
+### 9 插件套件全线上（npm + GitHub + CI 绿）
+
+| 插件 | npm | 一句话 |
+|---|---|---|
+| dsh-dep-audit | 0.1.1 | 供应链依赖审计（semver 引擎，抓到 #2763 类坏 latest） |
+| dsh-llms-forge | 0.1.0 | llms.txt 生成 |
+| dsh-cn-boot | 0.1.0 | 国内网络引导（npmmirror/代理探测） |
+| dsh-timesheet | 0.1.0 | 会话工时统计 |
+| dsh-discussions-radar | 0.1.0 | 官方讨论区雷达 |
+| dsh-readme-forge | 0.1.0 | README 生成 |
+| dsh-firstrun | 0.1.0 | 首启体检 |
+| dsh-disk-audit | 0.1.0 | 磁盘占用审计 |
+| dsh-quality-score | 0.1.4 | 插件质量评分卡（325 插件榜单，12 测试） |
+
+收录 PR：awesome-dsh-plugin 8 个（#1682/#1684/#1698/#1722/#1727/#1732/#1737/#1786，OPEN，repo 年龄 gate 08-19 10:26 UTC 起陆续转绿）+ 0xsline/awesome-deepseek-harness #401（OPEN CLEAN）。
+
+### #2763 战役（坏 latest dist-tag）
+
+- 全注册表扫描：325 npm-installable → 101 声明 dsh-tools 范围 → **78 被坏 latest 命中**；what-if latest→0.1.0-rc.7 修复 78/78
+- 评分卡联动：78 个 B 的唯一扣分即 dsh-tools peer；修复后 240A→318A
+- 官方讨论区 #2763 共 7 条实证回复（影响面/趋势/leaderboard/修复影响/8 个精确 pin 名单）
+- 修复日验证器：`scripts/verify-2763-fix.mjs`（detect latest 变化 → 重扫 → 重评 → 出报告，dry-run 已验证）
+
+### 技术核验回复 12 条（全部对照 main HEAD 99f6f02，见 Q&A 库索引）
+
+#3174（tmpfs 不对称·深挖）· #675（SQLite torn tail）· #3183（投影缓存）· #3190（spill ENOENT）· #1047（单坏日志拖垮列表）· #3195（CTRL_C_EVENT）· #3101（pnpm peer 警告·代码级纠正）· #3177（单波浪线删除线·实测）· #3178（WSL /dev/dxg·透传建议）· #3175（跨会话延续·生态对照）· #3206（CJK 检索·node:sqlite 实测）· #2763×7 战役回复
+
+### 工具与站点
+
+- `scripts/discussion-triage.mjs` + `.github/workflows/discussion-triage.yml`（每日值班队列，单 GraphQL 请求；需 DISCUSSIONS_TOKEN secret 启用）
+- 仪表盘 v3：[ecosystem-health-dashboard.html](https://zoahdev.github.io/dsh-ecosystem/ecosystem-health-dashboard.html)（917/325/101/78 当前态 + 趋势 + 分类 + leaderboard v1）
+- 商店端质量徽章：[zoahdev.github.io/dsh-subscribe](https://zoahdev.github.io/dsh-subscribe/)（917 插件，324 带 Q 徽章）
+- 教程 zh-25/en-25：社区贡献工作流（值班/核验/GraphQL/家族化）
+
+### 诚实数字
+
+- 官方讨论回复累计 20+；9 插件 npm 0.1.x 全绿；注册表 917（325 npm-installable）
+- 未完成：awesome-dsh-plugin 8 PR 待 gate 转绿 + 维护者合并；#2763 官方未修复（latest 仍 0.0.1-rc.1）；CI 值班需用户设 DISCUSSIONS_TOKEN 才能全自动
