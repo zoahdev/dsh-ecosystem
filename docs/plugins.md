@@ -1,4 +1,4 @@
-# Curated dsh plugin catalog (2026-08-15)
+# Curated dsh plugin catalog (2026-08-19)
 
 > Selection rule: dsh-installable or dsh-specific projects with a public repo. Stars are a visibility signal, not a quality endorsement. "✅ verified" = audited (CI/release/visibility); "🟡" = partial signals; "○" = not audited.
 
