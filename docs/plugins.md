@@ -11,6 +11,7 @@
 | dsh-github-release-radar | zoahdev | releases/stars/tags | 0 | ✅ |
 | dsh-plugin-doctor | zoahdev | pre-publish health checks | 0 | ✅ |
 | dsh-browser | Lum1104 | Chrome sidebar: DSH operates your browser | 108 | ○ |
+| dsh-dep-audit | zoahdev | dependency supply-chain hygiene audit (peer resolvability, dist-tag contradiction, staleness, sources, licenses, drift) | 0 | ✅ |
 | modsearch | liustack | web search bridge | 98 | ○ |
 | modlens | liustack | vision plugin | 1,480 | ○ |
 | dsh-vision-toolkit | Anionex | OCR/UI vision native | 381 | ○ |
