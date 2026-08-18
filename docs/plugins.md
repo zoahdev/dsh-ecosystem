@@ -24,6 +24,7 @@
 | dsh-find-plugins | Nagi-ovo | skill that finds/installs/verifies plugins | 78 | ○ |
 | dsh-firstrun | zoahdev | first-run health check (toolchain/profile/API key/workspace/registry + next steps) | 0 | ✅ |
 | dsh-market | dsh-market | in-DSH plugin market (browse/search/install) | 141 | ○ |
+| dsh-disk-audit | zoahdev | disk-usage audit of dsh data dirs (sizes/largest files/oversized warnings + cleanup suggestions) | 0 | ✅ |
 | dsh-mcp-client | deepseek-harness | MCP server client (ships with CLI) | — | 🟡 |
 | coding-tools-mcp | xyTom | code via MCP | 781 | ○ |
 | dsh-ads | Nagi-ovo | parody ads for DSH Web | 367 | ○ |
