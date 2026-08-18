@@ -73,3 +73,33 @@ Affected list (name | source | declared range | plugin latest):
 
 | Plugin | source | declared range |
 |---|---|---|
+| dsh-readme-forge | peer | ^0.1.0-rc.6 |
+| dsh-discussions-radar | peer | ^0.1.0-rc.6 |
+| dsh-llms-forge | peer | ^0.1.0-rc.6 |
+| dsh-firstrun | peer | ^0.1.0-rc.6 |
+| dsh-disk-audit | peer | ^0.1.0-rc.6 |
+| dsh-cn-boot | peer | ^0.1.0-rc.6 |
+| dsh-timesheet | peer | ^0.1.0-rc.6 |
+| dsh-dep-audit | peer | ^0.1.0-rc.6 |
+| dsh-diagram | peer | 0.1.0-rc.6 |
+| dsh-file-upload | peer | ^0.1.0-rc.6 |
+| dsh-splash-launcher | peer | ^0.1.0-rc.6 |
+| @huiliyi37/dsh-tianshu-tui | peer | ^0.1.0-rc.6 |
+| @lemcae/dsh-balance | peer | ^0.1.0-rc.5 |
+| dsh-better-sidebar | peer | ^0.1.0-rc.7 |
+| dsh-plugin-genui | peer | ^0.1.0-rc.6 |
+| dsh-codex-timeline | peer | 0.1.0-rc.7 |
+| @open-agfs/dsh-agfs | peer | ^0.1.0-rc.6 |
+| @zseven-w/dsh-openpencil | peer | ^0.1.0-rc.6 |
+| dsh-codex-connect | peer | 0.1.0-rc.6 |
+| @wnjxyk/dsh-codex-oauth | dep | ^0.1.0-rc.6 |
+| dsh-codex-auth | peer | ^0.1.0-rc.6 |
+| task-passport | peer | >=0.1.0-rc.5 |
+| dsh-plugin-solo-thinking | peer | ^0.1.0-rc.6 |
+| dsh-agent-message | peer | >=0.1.0-rc.6 <0.2.0 |
+| dsh-chat-import | peer | ^0.1.0-rc.6 |
+| dsh-period-report | peer | ^0.1.0-rc.6 |
+| dsh-memory-vault | peer | ^0.1.0-rc.6 |
+| dsh-unified-agent-memory | peer | ^0.1.0-rc.6 |
+| dsh-flomo | peer | ^0.1.0-rc.6 |
+| dsh-memento | peer | >=0.1.0-rc.6 |
