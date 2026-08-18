@@ -147,6 +147,11 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 
 - [Ecosystem health dashboard](https://zoahdev.github.io/dsh-ecosystem/ecosystem-health-dashboard.html) — supply-chain scan, #2763 impact, quality leaderboard v0 in one page.
 
+## #2763 fix-day verifier
+
+Run \
+ode scripts/verify-2763-fix.mjs\ — detects when the official \latest\ dist-tag changes, then re-scans the registry, re-scores the leaderboard, and writes the impact-drop report.
+
 ## Contribute
 
 - Know a plugin that should be in the catalog? Open an issue or PR with the repo URL.
