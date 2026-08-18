@@ -13,6 +13,8 @@
 | dsh-browser | Lum1104 | Chrome sidebar: DSH operates your browser | 108 | ○ |
 | dsh-dep-audit | zoahdev | dependency supply-chain hygiene audit (peer resolvability, dist-tag contradiction, staleness, sources, licenses, drift) | 0 | ✅ |
 | modsearch | liustack | web search bridge | 98 | ○ |
+| dsh-llms-forge | zoahdev | llms.txt generator for plugin repos (AI-readable discovery, read-only by default) | 0 | ✅ |
+| dsh-cn-boot | zoahdev | China-network bootstrap: probes/mirrors/proxy recommendations + generated script | 0 | ✅ |
 | modlens | liustack | vision plugin | 1,480 | ○ |
 | dsh-vision-toolkit | Anionex | OCR/UI vision native | 381 | ○ |
 | dsh-vision-router | ysr666 | free vision chain | 89 | ○ |
