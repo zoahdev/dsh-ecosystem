@@ -20,6 +20,7 @@
 | dsh-vision-toolkit | Anionex | OCR/UI vision native | 381 | ○ |
 | dsh-discussions-radar | zoahdev | official GitHub Discussions radar (Ideas/Q&A/Show Your Plugins!/General/Announcements) | 0 | ✅ |
 | dsh-vision-router | ysr666 | free vision chain | 89 | ○ |
+| dsh-readme-forge | zoahdev | README generator for plugin repos (package.json + cordis.patch.yml + source layout) | 0 | ✅ |
 | dsh-find-plugins | Nagi-ovo | skill that finds/installs/verifies plugins | 78 | ○ |
 | dsh-market | dsh-market | in-DSH plugin market (browse/search/install) | 141 | ○ |
 | dsh-mcp-client | deepseek-harness | MCP server client (ships with CLI) | — | 🟡 |
