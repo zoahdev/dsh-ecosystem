@@ -16,6 +16,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 const REGISTRY_PATH = process.argv[2] ?? './dsh-subscribe/registry.json'
 const OUT = process.argv.find((a) => a.startsWith('--out='))?.slice('--out='.length)
 const WHATIF = process.argv.includes('--what-if')
+const LIST = process.argv.includes('--list')
 const CONCURRENCY = 6
 
 function encode(name) { return name.startsWith('@') ? name.replace('/', '%2F') : name }
@@ -115,6 +116,13 @@ lines.push('| declared range | plugins |')
 lines.push('|---|---|')
 for (const [k, v] of [...failCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 15)) lines.push(`| ${k} | ${v} |`)
 
+if (LIST && affected.length > 0) {
+  const names = affected.map((r) => r.name).sort()
+  console.log('')
+  console.log(`## Affected plugins (${names.length})`)
+  console.log('')
+  console.log(names.map((n) => '- ' + n).join('\n'))
+}
 const text = lines.join('\n') + '\n'
 console.log(text)
 if (OUT) writeFileSync(OUT, text, 'utf8')
