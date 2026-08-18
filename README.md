@@ -71,7 +71,7 @@ flowchart LR
 | [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) | 生态地图：精选目录 + 周报 + 发布兼容性 + 补丁验证 |
 | [dsh-ecosystem-status](https://github.com/zoahdev/dsh-ecosystem-status) | 自动生成的状态仪表盘 |
 | [dsh-docs](https://github.com/zoahdev/dsh-docs) | 官方文档提案 + 42 张可 cherry-pick 的上游补丁 |
-| [dsh-tutorials](https://github.com/zoahdev/dsh-tutorials) | 45 页双语教程：入门/架构/插件开发/发布自检/贡献路线 |
+| [dsh-tutorials](https://github.com/zoahdev/dsh-tutorials) | 50 页（25 章 × 中英）双语教程：入门/架构/插件开发/发布自检/贡献路线/社区工作流 |
 
 ### ⑥ 官方上游
 
@@ -146,7 +146,7 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 | [dsh-plugin-search](https://github.com/zoahdev/dsh-plugin-search) | Plugin discovery inside DSH | ✅ 6 tests, visibility, CI |
 | [dsh-github-release-radar](https://github.com/zoahdev/dsh-github-release-radar) | Releases/stars/tags radar | ✅ 16 tests, visibility, CI |
 | [dsh-plugin-template](https://github.com/zoahdev/dsh-plugin-template) | Verified template with peer guard | ✅ CI |
-| [dsh-tutorials](https://github.com/zoahdev/dsh-tutorials) | 45-page bilingual tutorial site | ✅ Pages live |
+| [dsh-tutorials](https://github.com/zoahdev/dsh-tutorials) | 50-page (25 chapters zh/en) bilingual tutorial site | ✅ Pages live |
 | [dsh-docs](https://github.com/zoahdev/dsh-docs) | Official-docs gap specs + upstream patch list | ✅ 42 patches documented |
 | [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) | Map + weekly + release-compat + patch-verify | ✅ 42-branch patch-verify bot |
 
