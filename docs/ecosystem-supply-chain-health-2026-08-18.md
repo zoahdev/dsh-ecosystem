@@ -160,3 +160,15 @@ Computed against the 77 affected plugins (same snapshot):
 - **8 remain broken** because they pin the exact version `0.1.0-rc.6` (an exact pin, not a caret range): dsh-diagram, dsh-codex-connect, dsh-checkpoint-rewind, dsh-git-worktree, dsh-doublecheck, dsh-mcp-panel, dsh-permission-rules, dsh-prometheus
 
 So a single official dist-tag fix (`latest` → `0.1.0-rc.7`) resolves 89% of the ecosystem impact; the remaining 8 are plugin-side exact pins that should be loosened to `^0.1.0-rc.6`.
+
+## Trend 2026-08-18 -> 2026-08-19
+
+| Metric | 08-18 | 08-19 | Δ |
+|---|---|---|---|
+| npm-installable plugins | 324 | 325 | +1 (dsh-quality-score) |
+| declare dsh-tools range | 100 | 101 | +1 |
+| affected by broken latest | 77 | 78 | +1 |
+| not affected | 23 | 23 | 0 |
+| unknown | 0 | 0 | 0 |
+
+**Conclusion**: impact holds steady; the official `latest` dist-tag for @deepseek-ai/dsh-tools is still 0.0.1-rc.1 (unfixed). The +1 delta is the new dsh-quality-score plugin itself (it declares `^0.1.0-rc.6` and is affected like every other plugin). Ecosystem waiting on the official fix; the what-if still stands (latest -> 0.1.0-rc.7 fixes 89%).
