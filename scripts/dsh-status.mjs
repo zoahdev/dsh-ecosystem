@@ -46,7 +46,15 @@ for (const t of times) {
 }
 const next = times.filter((t) => t.eligible > now).sort((a, b) => a.eligible - b.eligible)[0]
 if (next) console.log(`  -> next gate at ${new Date(next.eligible).toISOString().slice(0, 16)}Z (${Math.ceil((next.eligible - now) / 60000)}m)`)
-
+// maintainers' regate.yml: every 6h at :19 UTC (auto re-runs aged-in PRs)
+const uh = new Date(now).getUTCHours()
+const um = new Date(now).getUTCMinutes()
+const slotHours = [0, 6, 12, 18]
+let nextHour = slotHours.find((s) => s > uh || (s === uh && um < 19))
+let regate = new Date(now)
+if (nextHour === undefined) { nextHour = 0; regate.setUTCDate(regate.getUTCDate() + 1) }
+regate.setUTCHours(nextHour, 19, 0, 0)
+console.log(`  -> maintainer regate (auto, no action): ${regate.toISOString().slice(0, 16)}Z (${Math.ceil((regate - now) / 60000)}m)`)
 console.log('')
 console.log('## PRs (awesome-dsh-plugin + 0xsline)')
 for (const [n] of PRS) {
