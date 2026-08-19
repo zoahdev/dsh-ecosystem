@@ -71,7 +71,7 @@ flowchart LR
 | [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) | 生态地图：精选目录 + 周报 + 发布兼容性 + 补丁验证 |
 | [dsh-ecosystem-status](https://github.com/zoahdev/dsh-ecosystem-status) | 自动生成的状态仪表盘 |
 | [dsh-docs](https://github.com/zoahdev/dsh-docs) | 官方文档提案 + 42 张可 cherry-pick 的上游补丁 |
-| [dsh-tutorials](https://github.com/zoahdev/dsh-tutorials) | 52 页（26 章 × 中英）双语教程：入门/架构/插件开发/发布自检/贡献路线/社区工作流 |
+| [dsh-tutorials](https://github.com/zoahdev/dsh-tutorials) | 54 页（27 章 × 中英）双语教程：入门/架构/插件开发/发布自检/贡献路线/社区工作流 |
 
 ### ⑥ 官方上游
 
