@@ -122,6 +122,7 @@
 - 仪表盘 v3：[ecosystem-health-dashboard.html](https://zoahdev.github.io/dsh-ecosystem/ecosystem-health-dashboard.html)（917/325/101/78 当前态 + 趋势 + 分类 + leaderboard v1）
 - 商店端质量徽章：[zoahdev.github.io/dsh-subscribe](https://zoahdev.github.io/dsh-subscribe/)（917 插件，324 带 Q 徽章）
 - 教程 zh-25/en-25：社区贡献工作流（值班/核验/GraphQL/家族化）
+- 教程 zh-25/en-25：社区贡献工作流（值班/核验/GraphQL/家族化）`n- **已知问题家族图谱**：[docs/bug-families.md](https://github.com/zoahdev/dsh-ecosystem/blob/main/docs/bug-families.md)——10 个已核验根因家族（dist-tag/%TEMP% 清理/坏工件隔离/符号分裂/推理别名/Windows 令牌/信任边界/加载回滚/检索渲染/工具结果可信度），新帖先查图谱
 
 ### 诚实数字
 
