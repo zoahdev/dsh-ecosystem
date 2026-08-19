@@ -82,7 +82,7 @@
 
 ## 诚实数字
 
-- star：dsh-subscribe 1、dsh-github-intelligence 1（其余 0）；渠道：60+ 官方讨论帖、2 个收录 PR（awesome #492 已合并）、54 页教程、6 个 CI 全绿仓库
+- star：dsh-subscribe 1、dsh-github-intelligence 1（其余 0）；渠道：60+ 官方讨论帖、2 个收录 PR（awesome #492 已合并）、56 页教程、6 个 CI 全绿仓库
 - 未验证/未完成：官方 PR 通道未开（补丁就绪待提交）；npm 发布待用户 `NPM_TOKEN`；moonquake2004 契约适配待对方接入
 
 ---
