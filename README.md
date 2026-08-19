@@ -2,7 +2,7 @@
 
 > 由 [zoahdev](https://github.com/zoahdev) 维护。这里串起我在 DeepSeek Harness（dsh）生态做的全部东西——每个仓库是干嘛的、彼此什么关系、新手从哪开始。**给中文读者的一页地图。**
 
-**最新状态（2026-08）：** 42 个上游补丁 · 7 个 npm 包 · 9 个插件（npm + GitHub + CI 全绿）；收录 PR：awesome-dsh-plugin 8 个 + awesome-deepseek-harness 1 个（gate 转绿待合并） · 注册表 917 插件（325 可 npm 安装，质量评分已全覆盖） · 官方 RFC [#1814](https://github.com/deepseek-ai/deepseek-harness/discussions/1814)（dsh plugin check / doctor 采纳）与 [#2486](https://github.com/deepseek-ai/deepseek-harness/discussions/2486)（补丁队列）。
+**最新状态（2026-08）：** 48 个上游补丁 · 7 个 npm 包 · 9 个插件（npm + GitHub + CI 全绿）；收录 PR：awesome-dsh-plugin 8 个 + awesome-deepseek-harness 1 个（gate 转绿待合并） · 注册表 917 插件（325 可 npm 安装，质量评分已全覆盖） · 官方 RFC [#1814](https://github.com/deepseek-ai/deepseek-harness/discussions/1814)（dsh plugin check / doctor 采纳）与 [#2486](https://github.com/deepseek-ai/deepseek-harness/discussions/2486)（补丁队列）。
 
 ## 一句话看懂关系
 
@@ -70,14 +70,14 @@ flowchart LR
 | [dsh-github-release-radar](https://github.com/zoahdev/dsh-github-release-radar) | Release/star/仓库搜索雷达，无需 API key |
 | [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) | 生态地图：精选目录 + 周报 + 发布兼容性 + 补丁验证 |
 | [dsh-ecosystem-status](https://github.com/zoahdev/dsh-ecosystem-status) | 自动生成的状态仪表盘 |
-| [dsh-docs](https://github.com/zoahdev/dsh-docs) | 官方文档提案 + 42 张可 cherry-pick 的上游补丁 |
+| [dsh-docs](https://github.com/zoahdev/dsh-docs) | 官方文档提案 + 48 张可 cherry-pick 的上游补丁 |
 | [dsh-tutorials](https://github.com/zoahdev/dsh-tutorials) | 54 页（27 章 × 中英）双语教程：入门/架构/插件开发/发布自检/贡献路线/社区工作流 |
 
 ### ⑥ 官方上游
 
 | 仓库 | 一句话 |
 | --- | --- |
-| [deepseek-harness](https://github.com/zoahdev/deepseek-harness) | 官方仓库 fork，带着 42 张补丁（根因 + 回归测试，等 PR 通道开） |
+| [deepseek-harness](https://github.com/zoahdev/deepseek-harness) | 官方仓库 fork，带着 48 张补丁（根因 + 回归测试，等 PR 通道开） |
 
 ## 新手从哪开始
 
@@ -120,7 +120,7 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 ## Quick stats (2026-08-19)
 
 - Official: `deepseek-ai/deepseek-harness` — 0.1.0-rc.7 (HEAD 99f6f02)
-- Official discussions: 3000+ threads; zoahdev replies: 20+ evidence-grade (triage: `scripts/discussion-triage.mjs`, daily CI: `.github/workflows/discussion-triage.yml`)
+- Official discussions: 3000+ threads; zoahdev replies: 60+ evidence-grade (triage: `scripts/discussion-triage.mjs`, daily CI: `.github/workflows/discussion-triage.yml`)
 - #2763 (broken `latest` dist-tag): still unfixed, 78/325 plugins affected; verifier: `scripts/verify-2763-fix.mjs`
 - Registry (dsh-subscribe): 917 plugins, 325 npm-installable, 78 B-grade tied to #2763 alone
 
@@ -130,7 +130,7 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 - `dsh-plugin` topic: 2,958 repos (noisy: includes skills, desktops, and unrelated projects)
 - Curated lists: 8+ (crowded — see [docs/plugins.md](./docs/plugins.md#curated-lists))
 - Marketplaces/registries: dsh-marketplace (PR-based), dsh-market (in-DSH), several web marketplaces
-- Tracked upstream bugs: 42 (42 cherry-pick-ready patches, see [patch list](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md))
+- Tracked upstream bugs: 48 (48 cherry-pick-ready patches, see [patch list](https://github.com/zoahdev/dsh-docs/blob/main/docs/specs/upstream-patches.md))
 - Gaps: 8 (see [Gap radar](./docs/weekly-2026-08-15.md#gap-radar))
 
 ## The zoahdev suite (fully verified)
@@ -148,8 +148,8 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 | [dsh-github-release-radar](https://github.com/zoahdev/dsh-github-release-radar) | Releases/stars/tags radar | ✅ 16 tests, visibility, CI |
 | [dsh-plugin-template](https://github.com/zoahdev/dsh-plugin-template) | Verified template with peer guard | ✅ CI |
 | [dsh-tutorials](https://github.com/zoahdev/dsh-tutorials) | 52-page (26 chapters zh/en) bilingual tutorial site | ✅ Pages live |
-| [dsh-docs](https://github.com/zoahdev/dsh-docs) | Official-docs gap specs + upstream patch list | ✅ 42 patches documented |
-| [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) | Map + weekly + release-compat + patch-verify | ✅ 42-branch patch-verify bot |
+| [dsh-docs](https://github.com/zoahdev/dsh-docs) | Official-docs gap specs + upstream patch list | ✅ 48 patches documented |
+| [dsh-ecosystem](https://github.com/zoahdev/dsh-ecosystem) | Map + weekly + release-compat + patch-verify | ✅ 48-branch patch-verify bot |
 
 ## Live dashboard
 

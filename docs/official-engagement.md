@@ -48,7 +48,7 @@
 
 ### 生态地图
 - Week 2 周报已发布（注册表 917、10 个 awesome 合并、doctor 契约 5 实现收敛）
-- dsh-ecosystem-status 仪表盘每日刷新（42 补丁 / 908 插件 / 21 已验证）
+- dsh-ecosystem-status 仪表盘每日刷新（48 补丁 / 917 插件 / 30 已验证）
 
 ### 分发
 - 博客 8 篇深度文上线：https://zoahdev.github.io/blog/（Symbol 根因 / compaction / 安全边界 / doctor 契约 / API 纪律 / 自进化 / 物理 AI / 生态信任）
@@ -82,7 +82,7 @@
 
 ## 诚实数字
 
-- star：dsh-subscribe 1、dsh-github-intelligence 1（其余 0）；渠道：20+ 官方讨论帖、2 个收录 PR（awesome #492 已合并）、35 页教程、6 个 CI 全绿仓库
+- star：dsh-subscribe 1、dsh-github-intelligence 1（其余 0）；渠道：60+ 官方讨论帖、2 个收录 PR（awesome #492 已合并）、54 页教程、6 个 CI 全绿仓库
 - 未验证/未完成：官方 PR 通道未开（补丁就绪待提交）；npm 发布待用户 `NPM_TOKEN`；moonquake2004 契约适配待对方接入
 
 ---
