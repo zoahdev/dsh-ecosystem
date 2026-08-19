@@ -107,6 +107,7 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 - **Gap radar** — what the ecosystem is missing (and who is building it).
 - **[Release compatibility reports](./docs/release-compat/)** — npm dist-tags + zoahdev suite CI + ecosystem health, auto-generated on every release train change.
 - **[Official engagement dossier](./docs/official-engagement.md)** — one page of every upstream contribution (patches, RFCs, docs) with links and status.
+- **[Known bug family map](./docs/bug-families.md)** — root-cause taxonomy of verified discussion families (dist-tags, %TEMP% cleanup, corrupt artifacts, symbol splits, reasoning aliases, Windows tokens, trust fences, tool-result observability).
 
 ## How to read quality signals
 
@@ -184,7 +185,8 @@ DeepSeek Harness（`dsh`）在 0.1.0-rc.6 开源后，生态几天内爆发：29
 - **Bug 雷达**：已知上游 bug，带状态、根因、修复/规避方案。
 - **空白雷达**：生态还缺什么（以及谁在做）。
 - **发布兼容性报告**（`docs/release-compat/`）：npm dist-tags + zoahdev 套件 CI + 生态健康，每次 release train 变化自动生成。
-- **官方互动档案**（`docs/official-engagement.md`）：一页列出所有上游贡献（补丁、RFC、文档）及状态链接。
+- **官方互动档案**（docs/official-engagement.md）：一页列出所有上游贡献（补丁、RFC、文档）及状态链接。
+- **已知问题家族图谱**（docs/bug-families.md）：已核验讨论家族的根因分类（dist-tag、%TEMP% 清理、坏工件隔离、符号分裂、推理字段别名、Windows 令牌、远程信任边界、工具结果可信度）。
 
 ## 质量信号怎么看
 
