@@ -121,7 +121,7 @@ DeepSeek Harness (`dsh`) went open source on 0.1.0-rc.6 and the ecosystem explod
 
 - Official: `deepseek-ai/deepseek-harness` — 0.1.0-rc.7 (HEAD 99f6f02)
 - Official discussions: 3000+ threads; zoahdev replies: 60+ evidence-grade (triage: `scripts/discussion-triage.mjs`, daily CI: `.github/workflows/discussion-triage.yml`)
-- #2763 (broken `latest` dist-tag): still unfixed, 78/325 plugins affected; verifier: `scripts/verify-2763-fix.mjs`
+- #2763 (broken `latest` dist-tag): still unfixed, family-wide 160/325 plugins affected (dsh-tools 78); what-if latest->rc.7 restores 100, 60 remain; verifier: `scripts/verify-2763-fix.mjs` (14 packages latest==next)
 - Registry (dsh-subscribe): 917 plugins, 325 npm-installable, 78 B-grade tied to #2763 alone
 
 ## Quick stats (2026-08-15)
