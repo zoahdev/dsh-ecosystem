@@ -20,6 +20,7 @@
 ## 家族 3：坏工件隔离族（一个坏文件拖垮全局）
 
 - 代表帖：[#675](https://github.com/deepseek-ai/deepseek-harness/discussions/675)（SQLite torn tail 吞掉合法事件）→ [#1047](https://github.com/deepseek-ai/deepseek-harness/discussions/1047)（单坏 session 日志让 session.list 整体 500）→ [#3173](https://github.com/deepseek-ai/deepseek-harness/discussions/3173)（坏插件崩溃启动，installFailLoud）
+- **崩溃恢复子族**：[#3232](https://github.com/deepseek-ai/deepseek-harness/discussions/3232)（崩溃后合成 closers 与续写事件共用 seq → scanner 判永久 corrupt）——repair.ts:27+ 合成 closers 续号 + index.ts:539/565 firstLiveSeq=log.length + coordinator.ts:945 commitRepair 后强制重载；双实例共享 $DSH_HOME 时第二写者用未含 closers 的 seed 重号；修复=单一编号源（closers 走 Session.append）+ firstLiveSeq 按文件已提交数 + scanner 可恢复路径；#1593 同族
 - 原则：隔离 + 可见（warn + skip，load 仍拒绝；启动跳过安全条目必须 boot banner + doctor 可查）
 - 已验证：#675 tornFrom 唯一消费方=load→commitRepair；#1047 `readFirstZstdLine@492` 无保护 + `assertStoredIdentity@498` + duplicate-id `@500-502` 同循环抛错点
 - 测试建议：`[valid,bad,valid]` 回归；持久化层断言"坏记录不被当作最新覆盖"
