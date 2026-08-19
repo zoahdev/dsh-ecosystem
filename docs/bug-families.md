@@ -69,6 +69,20 @@
 - 建议：shell 类工具 exit≠0 → isError:true 归一；健康监控按 isError/error 统计而非解析 stderr
 - 同帖发现 2（归档≠删除）：`workspace/src/index.ts:244-256` archiveSession 只写 archivedSessionIds 标记，数据 100% 保留——"信任基础设施"缺口，建议 UI 明示归档与删除的区别
 
+
+## 家族 11：out-of-tree 会话事件信封族（ignorable-envelope 缺口）
+
+- 代表帖：[#3191](https://github.com/deepseek-ai/deepseek-harness/discussions/3191)（dsh-click/observed|action 崩溃 rc.6/rc.7）+ 同族 4 位插件作者（#1538/#1584/#1619/#2778）
+- 根因：读侧已支持 `ignorable: true`（coordinator.ts:1063 + types.ts:412-422 契约），但 `Session.append` 对非 surface 类型不暴露 opts（index.ts:604-608）——插件事件写不进标记，冷加载时未知类型拒绝 resume
+- 已验证修复：Mchsd 分支 `feat/session-append-ignorable-envelope`（6430083a，基于 master 47f9438；三文件与 main 99f6f02 逐字节一致，可干净 apply）+ zoahdev 独立核验（main+补丁 761/762 通过，唯一失败为 Windows symlink EPERM 预存环境问题）
+- 原则：silent-write / loud-read 不对称 → warn-at-append 把失败点前移；读侧严格是坏工件隔离族的完整性背水，不能放宽
+
+## 家族 12：sandbox 同模式升级误报族
+
+- 代表帖：[#3219](https://github.com/deepseek-ai/deepseek-harness/discussions/3219)
+- 根因：`WIDER_MODES` 无 self 条目（escalation.ts:22-28），`approveEscalation` 严格更宽检查先于审批（escalation.ts:150-157）——full-access 会话请求 full-access 报 "not strictly wider"
+- 已验证修复：zoahdev 分支 `fix/escalation-same-mode-pass-through`（8d83d01，基于 main 99f6f02）：同模式短路 + 测试更新；sandbox 包 19/19 + 全量 typecheck 过
+- 注意：工具层 `validateEscalationArgs` 在 approveEscalation 之前（tool-bash:67/tool-pwsh:99/tool-fs sandbox.ts:88），不带 justification 的模型在更早处报错——完整修复需工具层同模式跳过（留作独立补丁）
 ## 如何用这张图
 
 1. 新 bug 帖：先对照家族表 → 命中即在回复里引用根因帖编号 + 补该帖的增量证据（环境/复现/新字段）。
