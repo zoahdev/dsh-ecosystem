@@ -123,7 +123,7 @@
 - 商店端质量徽章：[zoahdev.github.io/dsh-subscribe](https://zoahdev.github.io/dsh-subscribe/)（917 插件，324 带 Q 徽章）
 - 教程 zh-25/en-25：社区贡献工作流（值班/核验/GraphQL/家族化）
 - 教程 zh-25/en-25：社区贡献工作流（值班/核验/GraphQL/家族化）
-- **已知问题家族图谱**：[docs/bug-families.md](https://github.com/zoahdev/dsh-ecosystem/blob/main/docs/bug-families.md)——10 个已核验根因家族（dist-tag/%TEMP% 清理/坏工件隔离/符号分裂/推理别名/Windows 令牌/信任边界/加载回滚/检索渲染/工具结果可信度），新帖先查图谱
+- **已知问题家族图谱**：[docs/bug-families.md](https://github.com/zoahdev/dsh-ecosystem/blob/main/docs/bug-families.md)——13 个已核验根因家族（dist-tag/%TEMP% 清理/坏工件隔离/符号分裂/推理别名/Windows 令牌/信任边界/加载回滚/检索渲染/工具结果可信度/会话事件信封/同模式升级误报/无约束执行面绕过沙箱），新帖先查图谱
 - 新回复：#3219（同模式 sandbox_permissions 应放行——根因确认 + 现有测试会破 + 工具层 validation 前置缺口，提议三件套完整修复）、#3220（/history 深链直达轨迹——四点现状全核验 + URL 绑定最小闭环）、教程 zh-27/en-27（家族图谱 triage 工作流，54 页）
 
 ### 诚实数字
