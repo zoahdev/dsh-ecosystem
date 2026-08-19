@@ -85,6 +85,14 @@
 - 根因：`WIDER_MODES` 无 self 条目（escalation.ts:22-28），`approveEscalation` 严格更宽检查先于审批（escalation.ts:150-157）——full-access 会话请求 full-access 报 "not strictly wider"
 - 已验证修复：zoahdev 分支 `fix/escalation-same-mode-pass-through`（8d83d01，基于 main 99f6f02）：同模式短路 + 测试更新；sandbox 包 19/19 + 全量 typecheck 过
 - 注意：工具层 `validateEscalationArgs` 在 approveEscalation 之前（tool-bash:67/tool-pwsh:99/tool-fs sandbox.ts:88），不带 justification 的模型在更早处报错——完整修复需工具层同模式跳过（留作独立补丁）
+
+## 家族 13：无约束执行面绕过沙箱族（Critical）
+
+- 代表帖：[#3245](https://github.com/deepseek-ai/deepseek-harness/discussions/3245)（run_code/Code Mode worker-thread 无文件效应约束——绕过 Landlock/bwrap/Seatbelt，任意文件读写 + 无约束子进程，CVSS 10.0/9.8）
+- 根因：bash/fs 都走 ctx.sandbox（bash-sandbox confine / fs-sandbox 围栏），run_code 的 Worker（env:{}/execArgv:[]）没有任何文件效应策略（code-runtime-worker-thread/src/index.ts:378-393 + bootstrap AsyncFunction:405-411）；默认沙箱 read-only/workspace-write 下该路径静默逃逸
+- 缓解（已落分支）：fix/run-code-failclosed-sandbox（93f7d83）——worker-thread + 受限策略 → run_code 拒绝（fail-closed），danger-full-access 放行
+- 根治方向：worker 纳入 ctx.sandbox.confine 或 Node --experimental-permission（后者 worker 语义不成熟，别作唯一防线）；workflow worker-thread（node:vm）与 cordis-host-runner 动态插件域同属无约束执行面，应一并 confine
+- 原则：信任边界必须可强制（#3212 policy 非声明 / #3223 attestation 同源）；文档声明（"containment, not a security boundary"）不等于隔离实现
 ## 如何用这张图
 
 1. 新 bug 帖：先对照家族表 → 命中即在回复里引用根因帖编号 + 补该帖的增量证据（环境/复现/新字段）。
