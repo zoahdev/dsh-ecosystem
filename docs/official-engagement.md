@@ -114,7 +114,7 @@
 
 ### 技术核验回复 12 条（全部对照 main HEAD 99f6f02，见 Q&A 库索引）
 
-#3174（tmpfs 不对称·深挖）· #675（SQLite torn tail）· #3183（投影缓存）· #3190（spill ENOENT）· #1047（单坏日志拖垮列表）· #3195（CTRL_C_EVENT）· #3101（pnpm peer 警告·代码级纠正）· #3177（单波浪线删除线·实测）· #3178（WSL /dev/dxg·透传建议）· #3175（跨会话延续·生态对照）· #3206（CJK 检索·node:sqlite 实测）· #2763×7 战役回复
+#3174（tmpfs 不对称·深挖）· #675（SQLite torn tail）· #3183（投影缓存）· #3190（spill ENOENT）· #1047（单坏日志拖垮列表）· #3195（CTRL_C_EVENT）· #3101（pnpm peer 警告·代码级纠正）· #3177（单波浪线删除线·实测）· #3178（WSL /dev/dxg·透传建议）· #3175（跨会话延续·生态对照）· #3206（CJK 检索·node:sqlite 实测）· #2763×7 战役回复 · 08-20 新增：#3530（seq 重叠·#3232 同族）、#3524（prepare 缺口·#1697+#3234 链）、#3541（{{...}} 模板变量·#1341 同根因）、#3542（/compact 中止·#1944 链路）、#3546（归档/删除·指向 dsh-shelf+disk-audit）
 
 ### 工具与站点
 
@@ -128,5 +128,5 @@
 
 ### 诚实数字
 
-- 官方讨论回复累计 60+；9 插件 npm 0.1.x 全绿；注册表 917（325 npm-installable）
+- 官方讨论回复累计 65+；9 插件 npm 0.1.x 全绿；注册表 917（325 npm-installable）
 - 未完成：awesome-dsh-plugin 7 PR 待维护者合并（gate 已全绿）；#2763 官方 partial fix 进行中（next→rc.8，核心包 latest 仍旧）；CI 值班需用户设 DISCUSSIONS_TOKEN 才能全自动
