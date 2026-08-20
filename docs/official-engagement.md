@@ -108,7 +108,7 @@
 
 ### #2763 战役（坏 latest dist-tag）
 
-- 全注册表扫描：325 npm-installable → 101 声明 dsh-tools 范围 → **78 被坏 latest 命中**；what-if latest→next 修复 78/78（rc.7 版本数据；2026-08-20 复验：meta 包 @deepseek-ai/dsh latest 已升 0.1.0-rc.7（✅ 已修），但子包族（dsh-tools/session/llm 等）latest 仍卡 0.0.1-rc.1/rc.3，next 全族 rc.8——partial fix 进行中）
+- 全注册表扫描（08-20 复验）：316 npm-installable → 91 声明 dsh-tools 范围 → **69 被坏 latest 命中**（较 08-19 的 325/101/78 下降）；what-if latest→next 修复 69/69。meta 包 @deepseek-ai/dsh latest 已修到 0.1.0-rc.7 ✅；子包族 latest 仍卡 0.0.1-rc.1/rc.3，next 全族 rc.8——partial fix 进行中。
 - 评分卡联动：78 个 B 的唯一扣分即 dsh-tools peer；修复后 240A→318A
 - 官方讨论区 #2763 共 7 条实证回复（影响面/趋势/leaderboard/修复影响/8 个精确 pin 名单）
 - 修复日验证器：`scripts/verify-2763-fix.mjs`（detect latest 变化 → 重扫 → 重评 → 出报告，dry-run 已验证）
