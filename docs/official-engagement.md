@@ -82,7 +82,7 @@
 
 ## 诚实数字
 
-- star：dsh-subscribe 1、dsh-github-intelligence 1（其余 0）；渠道：60+ 官方讨论帖、2 个收录 PR（awesome #492 已合并）、56 页教程、6 个 CI 全绿仓库
+- star：dsh-subscribe 1、dsh-github-intelligence 1（其余 0）；渠道：60+ 官方讨论帖、2 个收录 PR（awesome #492 已合并）、58 页教程（+zh-29/en-29 dsh-unplug 生命周期）、6 个 CI 全绿仓库
 - 未验证/未完成：官方 PR 通道未开（补丁就绪待提交）；npm 发布待用户 `NPM_TOKEN`；moonquake2004 契约适配待对方接入
 
 ---
@@ -125,7 +125,7 @@
 - 教程 zh-25/en-25：社区贡献工作流（值班/核验/GraphQL/家族化）
 - 教程 zh-25/en-25：社区贡献工作流（值班/核验/GraphQL/家族化）
 - **已知问题家族图谱**：[docs/bug-families.md](https://github.com/zoahdev/dsh-ecosystem/blob/main/docs/bug-families.md)——13 个已核验根因家族（dist-tag/%TEMP% 清理/坏工件隔离/符号分裂/推理别名/Windows 令牌/信任边界/加载回滚/检索渲染/工具结果可信度/会话事件信封/同模式升级误报/无约束执行面绕过沙箱），新帖先查图谱
-- 新回复：#3219（同模式 sandbox_permissions 应放行——根因确认 + 现有测试会破 + 工具层 validation 前置缺口，提议三件套完整修复）、#3220（/history 深链直达轨迹——四点现状全核验 + URL 绑定最小闭环）、教程 zh-27/en-27（家族图谱 triage 工作流，54 页）
+- 新回复：#3219（同模式 sandbox_permissions 应放行——根因确认 + 现有测试会破 + 工具层 validation 前置缺口，提议三件套完整修复）、#3220（/history 深链直达轨迹——四点现状全核验 + URL 绑定最小闭环）、教程 zh-27/en-27（家族图谱 triage 工作流）· zh-29/en-29（插件生命周期管理 dsh-unplug，58 页）
 
 ### 诚实数字
 
