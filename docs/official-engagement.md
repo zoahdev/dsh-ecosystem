@@ -1,6 +1,6 @@
 # zoahdev × DeepSeek Harness — official engagement dossier
 
-> 一页纸记录 zoahdev 在官方讨论区/上游仓库的全部实质贡献。每条都有可点击链接与真实验证；更新于 2026-08-19。
+> 一页纸记录 zoahdev 在官方讨论区/上游仓库的全部实质贡献。每条都有可点击链接与真实验证；更新于 2026-08-20。
 
 ## Bug 根因 + 修复（cherry-pick 就绪）
 
@@ -103,11 +103,11 @@
 | dsh-disk-audit | 0.1.0 | 磁盘占用审计 |
 | dsh-quality-score | 0.1.4 | 插件质量评分卡（325 插件榜单，12 测试） |
 
-收录 PR：awesome-dsh-plugin 8 个（#1682/#1684/#1698/#1722/#1727/#1732/#1737/#1786，OPEN，repo 年龄 gate 08-19 10:26 UTC 起陆续转绿）+ 0xsline/awesome-deepseek-harness #401（OPEN CLEAN）。
+收录 PR：**已合并 2 个** —— 0xsline/awesome-deepseek-harness [#401](https://github.com/0xsline/awesome-deepseek-harness/pull/401)（9 插件套件）✅ 2026-08-20；awesome-dsh-plugin [#1732](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/1732)（dsh-firstrun）✅。**gate 全绿待合并 7 个**：#1682/#1684/#1698/#1722/#1727/#1737/#1786（Submission gate 全部 success，2026-08-20 06:45Z 验证）。
 
 ### #2763 战役（坏 latest dist-tag）
 
-- 全注册表扫描：325 npm-installable → 101 声明 dsh-tools 范围 → **78 被坏 latest 命中**；what-if latest→0.1.0-rc.7 修复 78/78
+- 全注册表扫描：325 npm-installable → 101 声明 dsh-tools 范围 → **78 被坏 latest 命中**；what-if latest→next 修复 78/78（rc.7 版本数据；**2026-08-20 复验：官方 next 已升 rc.8，部分子包 latest 已修复，核心包仍卡 rc.1/rc.3——partial fix 进行中**）
 - 评分卡联动：78 个 B 的唯一扣分即 dsh-tools peer；修复后 240A→318A
 - 官方讨论区 #2763 共 7 条实证回复（影响面/趋势/leaderboard/修复影响/8 个精确 pin 名单）
 - 修复日验证器：`scripts/verify-2763-fix.mjs`（detect latest 变化 → 重扫 → 重评 → 出报告，dry-run 已验证）
@@ -128,5 +128,5 @@
 
 ### 诚实数字
 
-- 官方讨论回复累计 20+；9 插件 npm 0.1.x 全绿；注册表 917（325 npm-installable）
-- 未完成：awesome-dsh-plugin 8 PR 待 gate 转绿 + 维护者合并；#2763 官方未修复（latest 仍 0.0.1-rc.1）；CI 值班需用户设 DISCUSSIONS_TOKEN 才能全自动
+- 官方讨论回复累计 60+；9 插件 npm 0.1.x 全绿；注册表 917（325 npm-installable）
+- 未完成：awesome-dsh-plugin 7 PR 待维护者合并（gate 已全绿）；#2763 官方 partial fix 进行中（next→rc.8，核心包 latest 仍旧）；CI 值班需用户设 DISCUSSIONS_TOKEN 才能全自动
