@@ -102,7 +102,7 @@
 | dsh-firstrun | 0.1.0 | 首启体检 |
 | dsh-disk-audit | 0.1.0 | 磁盘占用审计 |
 | dsh-quality-score | 0.1.4 | 插件质量评分卡（325 插件榜单，12 测试） |
-| dsh-unplug | 0.2.3 | 插件生命周期管理：list/remove/disable/enable/audit/reconcile，零依赖，只读默认，中英双语 |
+| dsh-unplug | 0.3.1 | 插件生命周期管理（小白模式/菜单/hint/--all/--dry-run）：list/remove/disable/enable/audit/reconcile，零依赖，只读默认，中英双语 |
 
 收录 PR：**已合并 2 个** —— 0xsline/awesome-deepseek-harness [#401](https://github.com/0xsline/awesome-deepseek-harness/pull/401)（9 插件套件）✅ 2026-08-20；awesome-dsh-plugin [#1732](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/1732)（dsh-firstrun）✅。**gate 全绿待合并 7 个**：#1682/#1684/#1698/#1722/#1727/#1737/#1786（Submission gate 全部 success，2026-08-20 06:45Z 验证）。**新增 #2159（dsh-unplug）** 已开，新仓库 24h 年龄 gate 排队中；官方讨论区展示帖 [#3603](https://github.com/deepseek-ai/deepseek-harness/discussions/3603)。
 
