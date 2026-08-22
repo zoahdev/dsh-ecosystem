@@ -7,6 +7,7 @@
 | Plugin | Author | What | ★ | Signal |
 |---|---|---|---|---|
 | dsh-github-intelligence | zoahdev | 195+ tools × 15 ecosystems, weekly digest | 0 | ✅ |
+| [dsh-cot-profile](https://github.com/Chloride233/dsh-cot-profile) | Chloride233 | real-time reasoning-trajectory indicators, confidence bands, and aggregate session records | 0 | ○ |
 | dsh-plugin-search | zoahdev | npm + awesome search inside DSH (GitHub fallback) | 0 | ✅ |
 | dsh-github-release-radar | zoahdev | releases/stars/tags | 0 | ✅ |
 | dsh-plugin-doctor | zoahdev | pre-publish health checks | 0 | ✅ |
